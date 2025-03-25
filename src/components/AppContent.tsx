@@ -1,5 +1,5 @@
-import FirstAidKitHome from "./checkpointhome/FirstAidKitHome";
-import IDCardVerificationHome from "./checkpointhome/IDCardVerificationHome";
+import FirstAidKitHome from "./firstaindkit/FirstAidKitHome";
+import IDCardVerificationHome from "./idcardverification/IDCardVerificationHome";
 import { SidebarTrigger } from "./ui/sidebar";
 
 const AppContent = ({ checkpointId }: any) => {

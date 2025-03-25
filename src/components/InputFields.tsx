@@ -1,5 +1,5 @@
-import FirstAidKitInput from './checkpointinput/FirstAidKitInput'
-import IDCardVerificationInput from './checkpointinput/IDCardVerificationInput'
+import FirstAidKitInput from './firstaindkit/FirstAidKitInput'
+import IDCardVerificationInput from './idcardverification/IDCardVerificationInput'
 
 
 const InputFields = ({ checkpointId }: any) => {

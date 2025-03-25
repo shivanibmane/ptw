@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { AppContext } from "../../components/AppContext"
-import IDCardImage from "../idcardverification/IDCardImage"
-import PersonImage from "../idcardverification/PersonImage"
-import IDCardVerificationOutput from "../idcardverification/IDCardVerificationOutput"
+import { AppContext } from "../AppContext"
+import IDCardImage from "./IDCardImage"
+import PersonImage from "./PersonImage"
+import IDCardVerificationOutput from "./IDCardVerificationOutput"
 
 
 const IDCardVerificationHome = () => {

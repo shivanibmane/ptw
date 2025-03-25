@@ -1,4 +1,4 @@
-import FirstAidKitImage from "../firstaindkit/FirstAidKitImage"
+import FirstAidKitImage from "./FirstAidKitImage"
 
 const FirstAidKitHome = () => {
   return (

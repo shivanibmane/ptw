@@ -12,8 +12,10 @@ const IDCardVerificationInput = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
 
   const handleCheckboxChange = (type: any) => {
-    setSelectedCheckbox((prev) => (prev === type ? null : type)); // Toggle selection
+    setSelectedCheckbox((prev) => (prev === type ? null : type));
+    // Toggle selection
   };
+
 
   return (
     <div className="px-3 mt-3">
@@ -30,23 +32,34 @@ const IDCardVerificationInput = () => {
         </div>
       ))}
       <div>
-        <div></div>{selectedCheckbox === "Face Verification" && <div className="space-y-2 ">
-          <FileUploader
-            title="Upload ID Card Image"
-            fileUpload={(event: any) => handleFileUpload(event, setIdCardImageFile, setIdCardImageUrl)}
-            imageFile={idCardImageFile}
-            deleteFile={() => handleFileDelete(setIdCardImageFile, setIdCardImageUrl)}
-          />
-          <FileUploader
-            title="Upload Person Image"
-            fileUpload={(event: any) => handleFileUpload(event, setRawFaceImageFile, setRawFaceImageUrl)}
-            imageFile={rawFaceImageFile}
-            deleteFile={() => handleFileDelete(setRawFaceImageFile, setRawFaceImageUrl)}
-          />
-          {idCardImageFile && rawFaceImageFile && <Button variant="destructive" onClick={() => { setIsSelectedVerificationFile(true) }}>Process</Button>}
-        </div>}</div>
+
+      </div>{selectedCheckbox === "Face Verification" && <div className="space-y-2 ">
+        <FileUploader
+          title="Upload ID Card Image"
+          fileUpload={(event: any) => handleFileUpload(event, setIdCardImageFile, setIdCardImageUrl)}
+          imageFile={idCardImageFile}
+          deleteFile={() => handleFileDelete(setIdCardImageFile, setIdCardImageUrl)}
+        />
+        <FileUploader
+          title="Upload Person Image"
+          fileUpload={(event: any) => handleFileUpload(event, setRawFaceImageFile, setRawFaceImageUrl)}
+          imageFile={rawFaceImageFile}
+          deleteFile={() => handleFileDelete(setRawFaceImageFile, setRawFaceImageUrl)}
+        />
+        {idCardImageFile && rawFaceImageFile && <Button variant="destructive" onClick={() => { setIsSelectedVerificationFile(true) }}>Process</Button>}
+      </div>}
+      <div>{selectedCheckbox === "ID Card Verification" && <FileUploader
+        title="Upload ID Card Image"
+        fileUpload={(event: any) => handleFileUpload(event, setIdCardImageFile, setIdCardImageUrl)}
+        imageFile={idCardImageFile}
+        deleteFile={() => handleFileDelete(setIdCardImageFile, setIdCardImageUrl)}
+      />
+      }
+
+      </div>
     </div >
   )
 }
 
 export default IDCardVerificationInput
+
