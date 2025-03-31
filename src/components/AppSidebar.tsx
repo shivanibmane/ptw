@@ -1,18 +1,17 @@
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
-import logo from "../assets/resoluteai_logo.webp"
+import resoluteai_logo from "../assets/resoluteai_logo.webp"
+import facegenie_logo from "../assets/facegenie_logo.png"
 import CheckPointSelector from "./CheckPointSelector"
 import InputFields from "./InputFields"
 
 
 const AppSidebar = ({ checkpointId }: any) => {
 
-
-
   return (
     <>
-      <Sidebar >
-        <SidebarHeader>
-          <img src={logo} alt="logo" className="px-5 py-2" />
+      <Sidebar className="">
+        <SidebarHeader >
+          <img src={facegenie_logo} alt="logo" className="px-5 py-2" />
         </SidebarHeader>
         <SidebarContent >
           <SidebarGroup >
@@ -29,10 +28,9 @@ const AppSidebar = ({ checkpointId }: any) => {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter className="px-5 py-2">
-          <p>Powered by</p>
-          <img src={logo} alt="logo" className="" />
+          <p className="text-[#F92609]">Powered by</p>
+          <img src={resoluteai_logo} alt="logo" className="" />
         </SidebarFooter>
-
       </Sidebar>
     </>
   )

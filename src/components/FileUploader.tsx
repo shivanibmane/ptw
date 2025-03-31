@@ -10,7 +10,7 @@ const FileUploader = ({ title, fileUpload, imageFile, deleteFile }: any) => {
       <h1 className="font-semibold text-xs">{title}</h1>
       <Card >
         <CardHeader>
-          <CardTitle className="font-semibold">Drag and file drag here</CardTitle>
+          <CardTitle className="text-xs">Drag and drop file here</CardTitle>
         </CardHeader>
         <CardFooter onClick={() => { inputFileRef.current.click(); }}>
           <Button variant="destructive" >Brwoser Files<input

@@ -1,21 +1,35 @@
 import { useContext } from "react"
-import { AppContext } from "../AppContext"
-import IDCardImage from "./IDCardImage"
-import PersonImage from "./PersonImage"
-import IDCardVerificationOutput from "./IDCardVerificationOutput"
+import { AppContext } from "../../components/AppContext"
+import IDCardImage from "../idcardverification/IDCardImage"
+import PersonImage from "../idcardverification/PersonImage"
+import IDCardVerificationOutput from "../idcardverification/IDCardVerificationOutput"
 
 
 const IDCardVerificationHome = () => {
-  const { isSelectedVerificationFile }: any = useContext(AppContext)
+  const { isSelectedVerificationFile, selectedCheckbox, }: any = useContext(AppContext)
+
+
+  let selectedCheckPointContent;
+  if (selectedCheckbox === "Face Verification") {
+    selectedCheckPointContent = <div className="flex flex-col  items-center  mx-auto min-xl:flex-row  xl:gap-5  py-7 xl:mt-10">
+      <IDCardImage />
+      <PersonImage />
+      {
+        isSelectedVerificationFile && <IDCardVerificationOutput />
+      }
+    </div>
+  } else if (selectedCheckbox === "ID Card Verification") {
+    selectedCheckPointContent = <div className="flex flex-col items-center mx-auto gap-5 py-7 xl:mt-10" >
+      <IDCardImage />
+      {
+        isSelectedVerificationFile && <IDCardVerificationOutput />
+      }
+    </div>
+  }
+
   return (
     <div >
-      {<div className="flex flex-col sm:flex-col items-center  mx-auto min-xl:flex-row  gap-5 px-4 py-7 mt-10">
-        <IDCardImage />
-        <PersonImage />
-        {
-          isSelectedVerificationFile && <IDCardVerificationOutput />
-        }
-      </div>}
+      {selectedCheckPointContent}
     </div>
   )
 }

@@ -1,19 +1,24 @@
 import { createContext, useState } from "react";
+import { toast } from "sonner";
 export const AppContext = createContext(null)
 
 const AppProvider = ({ children }: any) => {
+  const [selectedVerificationCheckpoint, setSelectedVerificationCheckpoint] = useState(null);
   // ID Card Verification
   const [idCardImageFile, setIdCardImageFile] = useState(null)
   const [rawFaceImageFile, setRawFaceImageFile] = useState(null)
   const [idCardImageUrl, setIdCardImageUrl]: any = useState(null)
   const [rawFaceImageUrl, setRawFaceImageUrl]: any = useState(null);
   const [isSelectedVerificationFile, setIsSelectedVerificationFile]: any = useState(false)
-  const [selectedVerificationCheckbox, setSelectedVerificationCheckbox] = useState(null);
-
+  const [selectedCheckbox, setSelectedCheckbox] = useState(null);
   const [selectedCheckboxValue, setSelectedCheckboxValue]: any = useState(false)
+
   // Firstaid Box
   const [firstAidKitImageFile, setfirstAidKitImageFile] = useState(null)
   const [firstAidKitImageUrl, setfirstAidKitImageUrl]: any = useState(null)
+
+  const [verificationOutputValues, setverificationOutputValues]: any = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleFileUpload = (
     event: any,
@@ -24,6 +29,7 @@ const AppProvider = ({ children }: any) => {
     if (file) {
       setFile(file);
       setUrl(URL.createObjectURL(file));
+      event.target.value = "";
     }
   };
 
@@ -33,27 +39,50 @@ const AppProvider = ({ children }: any) => {
   ) => {
     setFile(null);
     setUrl(null);
+    setIsSelectedVerificationFile(null)
   };
-
-
 
   const handleCheckboxChange = (type: any) => {
-    setSelectedVerificationCheckbox((prev) => (prev === type ? null : type)); // Toggle selection
+    setSelectedVerificationCheckpoint((prev) => (prev === type ? null : type)); // Toggle selection
   };
+  const fetchData = async () => {
+    setIsSelectedVerificationFile(true)
+    try {
+      const res = await fetch("/fist-aid-kit")
+      const data = await res.json()
+      setverificationOutputValues(data)
+      console.log(data)
+      setIsLoading(false)
+      toast.dismiss()
+      if (data.finalAnalysis === "Compliance") {
+        toast.success("Reason", {
+          description: data.reason
+        });
+      } else {
+        toast.error("Reason", {
+          description: data.reason
+        });
+      }
+    } catch (e) {
+      toast.error("Faild to load the data")
+    }
+  }
 
   const fetchIdCardVerificationData = async () => {
-    const response = await fetch("https://abc.com/id-verification", {
-      method: "POST",
-      headers: {
-        "Accepte": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        type: selectedVerificationCheckbox, idCardImage: idCardImageUrl,
-        rawFaceImage: rawFaceImageUrl,
+    try {
+      const response = await fetch("/fist-aid-kit", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          type: selectedCheckbox, idCardImage: idCardImageUrl,
+        })
       })
-    })
-    console.log(response)
+      console.log(response)
+      fetchData()
+    } catch (e) { console.log(e) }
   }
 
   const value: any = {
@@ -64,10 +93,14 @@ const AppProvider = ({ children }: any) => {
     setRawFaceImageUrl,
     idCardImageFile, rawFaceImageFile, idCardImageUrl, rawFaceImageUrl, isSelectedVerificationFile, setIsSelectedVerificationFile, handleFileUpload,
     fetchIdCardVerificationData,
-    selectedVerificationCheckbox, setSelectedVerificationCheckbox, handleCheckboxChange,
+    selectedVerificationCheckpoint, setSelectedVerificationCheckpoint, handleCheckboxChange,
+    selectedCheckbox, setSelectedCheckbox,
     selectedCheckboxValue, setSelectedCheckboxValue,
     // Firstaid Box
-    firstAidKitImageFile, setfirstAidKitImageFile, firstAidKitImageUrl, setfirstAidKitImageUrl
+    firstAidKitImageFile, setfirstAidKitImageFile, firstAidKitImageUrl, setfirstAidKitImageUrl,
+
+    // Data handling
+    isLoading, verificationOutputValues
   }
 
   return <AppContext.Provider value={value}>

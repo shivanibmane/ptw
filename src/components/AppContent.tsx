@@ -7,12 +7,14 @@ const AppContent = ({ checkpointId }: any) => {
     "id-card-verification": <IDCardVerificationHome />,
     "first-aid-kit": <FirstAidKitHome />,
   };
+
   return (
     <>
       <div className="main-content w-full">
         <SidebarTrigger />
-        <h1 className="text-center py-10 text-[#F92609] font-semibold text-4xl">PTW Monitaring Automation</h1>
+        <h1 className="text-center py-2 text-[#F92609] font-semibold text-4xl">PTW Monitoring Automation</h1>
         {contentConfig[checkpointId]}
+
       </div>
 
     </>
