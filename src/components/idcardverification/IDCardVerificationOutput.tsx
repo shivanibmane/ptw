@@ -49,13 +49,13 @@ const IDVerificationOutput = () => {
           </h1>
           <p className="text-md font-semibold">{verificationOutputValues?.dataValidation === true ? "True" : "False"}</p>
         </div>
-        <div className={`flex flex-col border items-center justify-center w-full xl:w-[200px]  px-8 h-[100px] gap-3 bg-green-300 rounded-sm`}>
+        <div className={`flex flex-col border items-center justify-center w-full xl:w-[200px]  px-8 h-[100px] gap-3 ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-100" : "bg-red-100"} rounded-sm`}>
           <h1 className="font-bold text-md">Final Analysis
           </h1>
           <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis}</p>
         </div>
       </div >
-      <div className="flex w-9/12 gap-1 bg-green-200 border py-2 my-3 px-2">
+      <div className={`flex w-9/12 gap-1 ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-100" : "bg-red-100"} border py-2 my-3 px-2`}>
         <h3 className="font-medium">Reason: </h3>
         <p>{verificationOutputValues?.reason}
         </p>

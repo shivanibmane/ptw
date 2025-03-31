@@ -48,7 +48,7 @@ const AppProvider = ({ children }: any) => {
   const fetchData = async () => {
     setIsSelectedVerificationFile(true)
     try {
-      const res = await fetch("/fist-aid-kit")
+      const res = await fetch("/id-card-verification")
       const data = await res.json()
       setverificationOutputValues(data)
       console.log(data)
@@ -70,7 +70,7 @@ const AppProvider = ({ children }: any) => {
 
   const fetchIdCardVerificationData = async () => {
     try {
-      const response = await fetch("/fist-aid-kit", {
+      const response = await fetch("/id-card-verification", {
         method: "POST",
         headers: {
           "Accept": "application/json",
