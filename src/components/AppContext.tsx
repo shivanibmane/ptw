@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 export const AppContext = createContext(null)
 
@@ -17,8 +17,14 @@ const AppProvider = ({ children }: any) => {
   const [firstAidKitImageFile, setfirstAidKitImageFile] = useState(null)
   const [firstAidKitImageUrl, setfirstAidKitImageUrl]: any = useState(null)
 
-  const [verificationOutputValues, setverificationOutputValues]: any = useState(null)
+  // Barricade Sites
+  const [barricadeSiteFile, setBarricadeSiteFile] = useState(null)
+  const [barricadeSiteImageUrl, setBarricadeSitetImageUrl]: any = useState(null)
+
+  const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => { }, [verificationOutputValues])
 
   const handleFileUpload = (
     event: any,
@@ -45,15 +51,23 @@ const AppProvider = ({ children }: any) => {
   const handleCheckboxChange = (type: any) => {
     setSelectedVerificationCheckpoint((prev) => (prev === type ? null : type)); // Toggle selection
   };
-  const fetchData = async () => {
+
+
+  const verificationInputData = async (endpoint: any, enpointPostData: any) => {
     setIsSelectedVerificationFile(true)
     try {
-      const res = await fetch("/id-card-verification")
-      const data = await res.json()
-      setverificationOutputValues(data)
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(enpointPostData)
+      })
+      const data = await response.json()
+      setVerificationOutputValues(data)
       console.log(data)
       setIsLoading(false)
-      toast.dismiss()
       if (data.finalAnalysis === "Compliance") {
         toast.success("Reason", {
           description: data.reason
@@ -63,25 +77,7 @@ const AppProvider = ({ children }: any) => {
           description: data.reason
         });
       }
-    } catch (e) {
-      toast.error("Faild to load the data")
-    }
-  }
 
-  const fetchIdCardVerificationData = async () => {
-    try {
-      const response = await fetch("/id-card-verification", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          type: selectedCheckbox, idCardImage: idCardImageUrl,
-        })
-      })
-      console.log(response)
-      fetchData()
     } catch (e) { console.log(e) }
   }
 
@@ -92,12 +88,15 @@ const AppProvider = ({ children }: any) => {
     setIdCardImageUrl,
     setRawFaceImageUrl,
     idCardImageFile, rawFaceImageFile, idCardImageUrl, rawFaceImageUrl, isSelectedVerificationFile, setIsSelectedVerificationFile, handleFileUpload,
-    fetchIdCardVerificationData,
+    verificationInputData,
     selectedVerificationCheckpoint, setSelectedVerificationCheckpoint, handleCheckboxChange,
     selectedCheckbox, setSelectedCheckbox,
     selectedCheckboxValue, setSelectedCheckboxValue,
     // Firstaid Box
     firstAidKitImageFile, setfirstAidKitImageFile, firstAidKitImageUrl, setfirstAidKitImageUrl,
+
+    // Barricaded Sites
+    barricadeSiteFile, setBarricadeSiteFile, barricadeSiteImageUrl, setBarricadeSitetImageUrl,
 
     // Data handling
     isLoading, verificationOutputValues

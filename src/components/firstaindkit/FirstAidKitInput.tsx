@@ -4,7 +4,7 @@ import { AppContext } from "../AppContext";
 import FileUploader from "../FileUploader";
 
 const FirstAidKitInput = () => {
-  const { handleFileDelete, handleFileUpload, firstAidKitImageFile, setfirstAidKitImageFile, setfirstAidKitImageUrl, setIsSelectedVerificationFile, fetchIdCardVerificationData }: any = useContext(AppContext)
+  const { handleFileDelete, handleFileUpload, firstAidKitImageFile, firstAidKitImageUrl, setfirstAidKitImageFile, setfirstAidKitImageUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
 
   useEffect(() => {
     setfirstAidKitImageFile(null)
@@ -20,7 +20,7 @@ const FirstAidKitInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setfirstAidKitImageFile, setfirstAidKitImageUrl) }}
           imageFile={firstAidKitImageFile}
           deleteFile={() => handleFileDelete(setfirstAidKitImageFile, setfirstAidKitImageUrl)}
-        />{firstAidKitImageFile && <Button variant="destructive" className="my-2" onClick={() => { fetchIdCardVerificationData() }}>Process</Button>}
+        />{firstAidKitImageFile && <Button variant="destructive" className="my-2" onClick={() => { verificationInputData("/first-aid-kit", { firstAidKitImageUrl: firstAidKitImageUrl }) }}>Process</Button>}
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ const IDCardVerificationHome = () => {
 
   let selectedCheckPointContent;
   if (selectedCheckbox === "Face Verification") {
-    selectedCheckPointContent = <div className="flex flex-col  items-center  mx-auto min-xl:flex-row  xl:gap-5  py-7 xl:mt-10">
+    selectedCheckPointContent = <div className="flex flex-col  items-center gap-6  mx-auto min-xl:flex-row xl:gap-4  py-7 xl:mt-10">
       <IDCardImage />
       <PersonImage />
       {

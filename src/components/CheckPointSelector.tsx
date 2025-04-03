@@ -7,11 +7,11 @@ import InputFields from './InputFields'
 const CheckPointSelector = () => {
   const { setSelectedVerificationCheckpoint }: any = useContext(AppContext);
 
-
   const navigate = useNavigate()
   const checkpoints = [
     { path: "/id-card-verification", name: "ID Card Verification" },
     { path: "/first-aid-kit", name: "First AID Kit" },
+    { path: "/barricade-site", name: "Barricade Site" },
   ];
 
   return (

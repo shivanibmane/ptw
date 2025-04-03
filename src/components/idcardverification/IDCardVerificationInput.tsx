@@ -7,19 +7,18 @@ import { AppContext } from "../AppContext"
 export const verifactionCheckPointTypes = [{ id: "face-verification", type: "Face Verification" }, { id: "id-card-verifications", type: "ID Card Verification" },];
 const IDCardVerificationInput = () => {
   const {
-    idCardImageFile, rawFaceImageFile, setIsSelectedVerificationFile, setIdCardImageFile, setRawFaceImageFile, setIdCardImageUrl,
-    setRawFaceImageUrl, handleFileDelete, handleFileUpload, selectedCheckbox, setSelectedCheckbox, fetchIdCardVerificationData }: any = useContext(AppContext)
+    idCardImageFile, idCardImageUrl, rawFaceImageUrl, rawFaceImageFile, setIsSelectedVerificationFile, setIdCardImageFile, setRawFaceImageFile, setIdCardImageUrl,
+    setRawFaceImageUrl, handleFileDelete, handleFileUpload, selectedCheckbox, setSelectedCheckbox, verificationInputData }: any = useContext(AppContext)
 
   let selectedCheckPointInput;
 
   const handleCheckboxChange = (type: any) => {
     setSelectedCheckbox((prev: any) => (prev === type ? null : type));
-
   };
 
   useEffect(() => {
-    setIdCardImageFile(null), setRawFaceImageFile(null), setIdCardImageUrl(null),
-      setRawFaceImageUrl(null), setIsSelectedVerificationFile(false)
+    setIdCardImageFile(null); setRawFaceImageFile(null); setIdCardImageUrl(null);
+    setRawFaceImageUrl(null); setIsSelectedVerificationFile(false)
   }, [selectedCheckbox])
 
   if (selectedCheckbox === "Face Verification") {
@@ -36,7 +35,7 @@ const IDCardVerificationInput = () => {
         imageFile={rawFaceImageFile}
         deleteFile={() => handleFileDelete(setRawFaceImageFile, setRawFaceImageUrl)}
       />
-      {idCardImageFile && rawFaceImageFile && <Button variant="destructive" onClick={() => { fetchIdCardVerificationData() }}>Process</Button>}
+      {idCardImageFile && rawFaceImageFile && <Button variant="destructive" onClick={() => { verificationInputData("/id-card-verification", { type: selectedCheckbox, idCardUrl: idCardImageUrl, rawFaceImageUrl: rawFaceImageUrl }) }}>Process</Button>}
     </div>
   } else if (selectedCheckbox === "ID Card Verification") {
     selectedCheckPointInput = <div>
@@ -46,10 +45,9 @@ const IDCardVerificationInput = () => {
         imageFile={idCardImageFile}
         deleteFile={() => handleFileDelete(setIdCardImageFile, setIdCardImageUrl)}
       />
-      {idCardImageFile && <Button variant="destructive" onClick={() => { fetchIdCardVerificationData() }}>Process</Button>}
+      {idCardImageFile && <Button variant="destructive" onClick={() => { verificationInputData("/id-card-verification", { type: selectedCheckbox, idCardUrl: idCardImageUrl }) }}>Process</Button>}
     </div>
   }
-
 
   return (
     <div className="px-3 mt-3">

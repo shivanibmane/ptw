@@ -6,8 +6,8 @@ const IDCardImage = () => {
   const { idCardImageUrl, }: any = useContext(AppContext);
   return (
     <>
-      <div className="xl:w-[450px] xl:h-[400px] flex justify-center items-center" >
-        {idCardImageUrl !== null && <div className="flex flex-col items-center"><ModalImage small={idCardImageUrl} medium={idCardImageUrl} alt="ID Card" hideZoom={false} /><p className="text-gray-400">ID Card</p></div>}
+      <div className="w-[300px] h-auto sm:w-[450px] sm:[400px]  flex justify-center items-center" >
+        {idCardImageUrl !== null && <div className="flex flex-col items-center"><ModalImage small={idCardImageUrl} medium={idCardImageUrl} alt="ID Card" hideZoom={false} className="w-[300px] h-auto" /><p className="text-gray-400">ID Card</p></div>}
       </div>
     </>
   )
