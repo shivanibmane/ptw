@@ -44,4 +44,14 @@ http.post('/barricade-site', async ({request}:any)=> {
       reason: 'Barricade detected',
     })
   }),
+http.post('/ne-voltage-check', async ({request}:any)=> {
+    const requestBody = await request.json();
+    console.log(requestBody)
+    return HttpResponse.json({
+      extaractedVoltage:117.0,
+      voltageValidation:true,
+      finalAnalysis: 'Compliance',
+      reason: 'voltage detected',
+    })
+  }),
 ];

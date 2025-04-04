@@ -1,12 +1,14 @@
 import BarricadeSiteInput from './barricadedsites/BarricadeSiteInput'
 import FirstAidKitInput from './firstaindkit/FirstAidKitInput'
 import IDCardVerificationInput from './idcardverification/IDCardVerificationInput'
+import VoltageCheckInput from './voltage/NEVoltageCheckInput'
 
 const InputFields = ({ checkpointId }: any) => {
   const fieldsConfig: any = {
     "id-card-verification": <IDCardVerificationInput />,
     "first-aid-kit": <FirstAidKitInput />,
-    "barricade-site": <BarricadeSiteInput />
+    "barricade-site": <BarricadeSiteInput />,
+    "ne-voltage-check": <VoltageCheckInput />
   }
   return (
     <>

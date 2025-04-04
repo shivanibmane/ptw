@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { toast } from "sonner";
 export const AppContext = createContext(null)
 
@@ -21,10 +21,13 @@ const AppProvider = ({ children }: any) => {
   const [barricadeSiteFile, setBarricadeSiteFile] = useState(null)
   const [barricadeSiteImageUrl, setBarricadeSitetImageUrl]: any = useState(null)
 
+  // Voltage Check
+  const [nevoltageCheckFile, setNEVoltageCheckFile] = useState(null)
+  const [nevoltageCheckUrl, setNEVoltageCheckUrl]: any = useState(null)
+
+
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => { }, [verificationOutputValues])
 
   const handleFileUpload = (
     event: any,
@@ -97,6 +100,10 @@ const AppProvider = ({ children }: any) => {
 
     // Barricaded Sites
     barricadeSiteFile, setBarricadeSiteFile, barricadeSiteImageUrl, setBarricadeSitetImageUrl,
+
+    // Voltage Check
+    nevoltageCheckFile, setNEVoltageCheckFile,
+    nevoltageCheckUrl, setNEVoltageCheckUrl,
 
     // Data handling
     isLoading, verificationOutputValues

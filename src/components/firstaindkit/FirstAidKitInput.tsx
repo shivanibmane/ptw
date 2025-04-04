@@ -9,7 +9,7 @@ const FirstAidKitInput = () => {
   useEffect(() => {
     setfirstAidKitImageFile(null)
     setfirstAidKitImageUrl(null)
-    setIsSelectedVerificationFile(null)
+    setIsSelectedVerificationFile(false)
   }, [])
 
   return (

@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom'
 import InputFields from './InputFields'
 
 const CheckPointSelector = () => {
-  const { setSelectedVerificationCheckpoint }: any = useContext(AppContext);
+  const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile }: any = useContext(AppContext);
 
   const navigate = useNavigate()
   const checkpoints = [
     { path: "/id-card-verification", name: "ID Card Verification" },
     { path: "/first-aid-kit", name: "First AID Kit" },
     { path: "/barricade-site", name: "Barricade Site" },
+    { path: "/ne-voltage-check", name: "N-E Voltage Check" },
   ];
 
   return (
@@ -20,6 +21,7 @@ const CheckPointSelector = () => {
       <Select onValueChange={(value) => {
         setSelectedVerificationCheckpoint(value);
         navigate(value)
+        setIsSelectedVerificationFile(false)
       }}>
         <SelectTrigger>
           <SelectValue placeholder="ID Card Verification" />

@@ -2,13 +2,15 @@
 import BarricadeSitetHome from "./barricadedsites/BarricadeSitetHome";
 import FirstAidKitHome from "./firstaindkit/FirstAidKitHome";
 import IDCardVerificationHome from "./idcardverification/IDCardVerificationHome";
+import NEVoltageCheckHome from "./voltage/NEVoltageCheckHome";
 import { SidebarTrigger } from "./ui/sidebar";
 
 const AppContent = ({ checkpointId }: any) => {
   const contentConfig: any = {
     "id-card-verification": <IDCardVerificationHome />,
     "first-aid-kit": <FirstAidKitHome />,
-    "barricade-site": <BarricadeSitetHome />
+    "barricade-site": <BarricadeSitetHome />,
+    "ne-voltage-check": <NEVoltageCheckHome />
 
   };
 

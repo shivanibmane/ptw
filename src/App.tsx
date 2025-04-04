@@ -9,6 +9,7 @@ function App() {
         <Route path="/id-card-verification" element={<Home checkpointId="id-card-verification" />} />
         <Route path="/first-aid-kit" element={<Home checkpointId="first-aid-kit" />} />
         <Route path="/barricade-site" element={<Home checkpointId="barricade-site" />} />
+        <Route path="/ne-voltage-check" element={<Home checkpointId="ne-voltage-check" />} />
       </Routes>
     </>
   )
