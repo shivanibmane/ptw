@@ -1,11 +1,11 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { AppContext } from './AppContext'
 import { useNavigate } from 'react-router-dom'
 import InputFields from './InputFields'
 
 const CheckPointSelector = () => {
-  const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile, selectedCheckbox }: any = useContext(AppContext);
+  const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile, }: any = useContext(AppContext);
 
   const navigate = useNavigate()
   const checkpoints = [
@@ -14,8 +14,8 @@ const CheckPointSelector = () => {
     { path: "/barricade-site", name: "Barricade Site" },
     { path: "/ne-voltage-check", name: "N-E Voltage Check" },
     { path: "/tools-safety", name: "Tools Safety" },
+    { path: "/derrick", name: "Derrick" },
   ];
-
   return (
     <div className='px-3 space-y-2'>
       <h2 className='text-[16px] font-semibold'>Select Checkpoint</h2>

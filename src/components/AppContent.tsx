@@ -5,6 +5,7 @@ import IDCardVerificationHome from "./idcardverification/IDCardVerificationHome"
 import NEVoltageCheckHome from "./voltage/NEVoltageCheckHome";
 import { SidebarTrigger } from "./ui/sidebar";
 import ToolsSafetyHome from "./toolssafety/ToolsSafetyHome";
+import DerrickHome from "./derrick/DerrickHome";
 
 const AppContent = ({ checkpointId }: any) => {
   const contentConfig: any = {
@@ -12,7 +13,8 @@ const AppContent = ({ checkpointId }: any) => {
     "first-aid-kit": <FirstAidKitHome />,
     "barricade-site": <BarricadeSitetHome />,
     "ne-voltage-check": <NEVoltageCheckHome />,
-    "tools-safety": <ToolsSafetyHome />
+    "tools-safety": <ToolsSafetyHome />,
+    "derrick": <DerrickHome />
 
   };
 

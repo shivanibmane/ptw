@@ -26,12 +26,13 @@ const AppProvider = ({ children }: any) => {
   const [nevoltageCheckUrl, setNEVoltageCheckUrl] = useState(null)
 
 
-  // Voltage Check
+  // Tools Safety
   const [toolsSafetyFile, setToolsSafetyFile] = useState(null)
   const [toolsSafetyUrl, setToolsSafetyUrl] = useState(null)
 
-
-
+  // Derrick 
+  const [derrickFile, setDerrickFile] = useState(null)
+  const [derrickUrl, setDerrickUrl] = useState(null)
 
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -114,6 +115,10 @@ const AppProvider = ({ children }: any) => {
     // Tools Safety
     toolsSafetyFile, setToolsSafetyFile,
     toolsSafetyUrl, setToolsSafetyUrl,
+
+    // Derrcik
+    derrickFile, setDerrickFile,
+    derrickUrl, setDerrickUrl,
 
     // Data handling
     isLoading, verificationOutputValues

@@ -79,4 +79,16 @@ http.post('/tools-safety', async ({request}:any)=> {
       "is_insulated_tools_detected": true
     })
   }),
+  http.post('/derrick', async ({request}:any)=> {
+    const requestBody = await request.json();
+    console.log(requestBody)
+    return HttpResponse.json({
+      derrick:{count:3,
+      valid:true,avgDetectionConf:12},
+      pole:{count:0,
+        valid:false,avgDetectionConf:0},
+      finalAnalysis: 'Compliance',
+      reason: 'Poles are detected',
+    })
+  }),
 ];
