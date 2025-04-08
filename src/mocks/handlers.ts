@@ -1,5 +1,4 @@
 import {http, HttpResponse} from "msw"
-
 export const handlers = [
 
 http.post('/id-card-verification', async ({request}:any)=> {
@@ -20,17 +19,16 @@ http.post('/id-card-verification', async ({request}:any)=> {
             ,reason:"ID card is valid"
           })
   }}),
-
 http.post('/first-aid-kit', async ({request}:any)=> {
     const requestBody = await request.json();
     console.log(requestBody)
     return HttpResponse.json({
-          detectionData: [{ detectionTitle: "Bandage Detection", detectionValue: 95},
-            { detectionTitle: "Cotton Detection", detectionValue: 86 },
-            { detectionTitle: "Ointment Detection", detectionValue: 67 },
+          detectionData: [{ detectionTitle: "Bandage Detection", detectionValue: 97},
+            { detectionTitle: "Cotton Detection", detectionValue: 0 },
+            { detectionTitle: "Ointment Detection", detectionValue: 0 },
             { detectionTitle: "Antiseptic Detection", detectionValue: 87 },],
-            finalAnalysis: "Compliance",
-            reason: "All item are deceted"
+            finalAnalysis: "Non-Compliance",
+            reason: "Some item are not deceted"
         })
   }),
   
@@ -52,6 +50,33 @@ http.post('/ne-voltage-check', async ({request}:any)=> {
       voltageValidation:true,
       finalAnalysis: 'Compliance',
       reason: 'voltage detected',
+    })
+  }),
+http.post('/tools-safety', async ({request}:any)=> {
+    const requestBody = await request.json();
+    console.log(requestBody)
+    return HttpResponse.json({
+      "processedImageUrl": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...", 
+      "detectionData": [
+        {
+          "detection_status": false,
+          "detection_cls": "non-insulated-tool",
+          "detection_id": 1,
+          "detection_conf": 0.88
+        },
+        {
+          "detection_status": false,
+          "detection_cls": "insulated-tool",
+          "detection_id": 2,
+          "detection_conf": 0.92
+        }
+      ],
+      "insulated_tools": 1,
+      "non_insulated_tools": 1,
+      "avg_detection_conf": 90.0,
+      "finalAnalysis": "Non-Compliance",
+      "reason": "Found 1 non-insulated tools which violates safety requirements.",
+      "is_insulated_tools_detected": true
     })
   }),
 ];

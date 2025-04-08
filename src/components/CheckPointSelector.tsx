@@ -1,11 +1,11 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AppContext } from './AppContext'
 import { useNavigate } from 'react-router-dom'
 import InputFields from './InputFields'
 
 const CheckPointSelector = () => {
-  const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile }: any = useContext(AppContext);
+  const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile, selectedCheckbox }: any = useContext(AppContext);
 
   const navigate = useNavigate()
   const checkpoints = [
@@ -13,6 +13,7 @@ const CheckPointSelector = () => {
     { path: "/first-aid-kit", name: "First AID Kit" },
     { path: "/barricade-site", name: "Barricade Site" },
     { path: "/ne-voltage-check", name: "N-E Voltage Check" },
+    { path: "/tools-safety", name: "Tools Safety" },
   ];
 
   return (
@@ -22,7 +23,7 @@ const CheckPointSelector = () => {
         setSelectedVerificationCheckpoint(value);
         navigate(value)
         setIsSelectedVerificationFile(false)
-      }}>
+      }} >
         <SelectTrigger>
           <SelectValue placeholder="ID Card Verification" />
         </SelectTrigger>

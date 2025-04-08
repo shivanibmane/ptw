@@ -7,23 +7,30 @@ const AppProvider = ({ children }: any) => {
   // ID Card Verification
   const [idCardImageFile, setIdCardImageFile] = useState(null)
   const [rawFaceImageFile, setRawFaceImageFile] = useState(null)
-  const [idCardImageUrl, setIdCardImageUrl]: any = useState(null)
-  const [rawFaceImageUrl, setRawFaceImageUrl]: any = useState(null);
-  const [isSelectedVerificationFile, setIsSelectedVerificationFile]: any = useState(false)
+  const [idCardImageUrl, setIdCardImageUrl] = useState(null)
+  const [rawFaceImageUrl, setRawFaceImageUrl] = useState(null);
+  const [isSelectedVerificationFile, setIsSelectedVerificationFile] = useState(false)
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
-  const [selectedCheckboxValue, setSelectedCheckboxValue]: any = useState(false)
+  const [selectedCheckboxValue, setSelectedCheckboxValue] = useState(false)
 
   // Firstaid Box
   const [firstAidKitImageFile, setfirstAidKitImageFile] = useState(null)
-  const [firstAidKitImageUrl, setfirstAidKitImageUrl]: any = useState(null)
+  const [firstAidKitImageUrl, setfirstAidKitImageUrl] = useState(null)
 
   // Barricade Sites
   const [barricadeSiteFile, setBarricadeSiteFile] = useState(null)
-  const [barricadeSiteImageUrl, setBarricadeSitetImageUrl]: any = useState(null)
+  const [barricadeSiteImageUrl, setBarricadeSitetImageUrl] = useState(null)
 
   // Voltage Check
   const [nevoltageCheckFile, setNEVoltageCheckFile] = useState(null)
-  const [nevoltageCheckUrl, setNEVoltageCheckUrl]: any = useState(null)
+  const [nevoltageCheckUrl, setNEVoltageCheckUrl] = useState(null)
+
+
+  // Voltage Check
+  const [toolsSafetyFile, setToolsSafetyFile] = useState(null)
+  const [toolsSafetyUrl, setToolsSafetyUrl] = useState(null)
+
+
 
 
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
@@ -48,7 +55,7 @@ const AppProvider = ({ children }: any) => {
   ) => {
     setFile(null);
     setUrl(null);
-    setIsSelectedVerificationFile(null)
+    setIsSelectedVerificationFile(false)
   };
 
   const handleCheckboxChange = (type: any) => {
@@ -80,7 +87,6 @@ const AppProvider = ({ children }: any) => {
           description: data.reason
         });
       }
-
     } catch (e) { console.log(e) }
   }
 
@@ -104,6 +110,10 @@ const AppProvider = ({ children }: any) => {
     // Voltage Check
     nevoltageCheckFile, setNEVoltageCheckFile,
     nevoltageCheckUrl, setNEVoltageCheckUrl,
+
+    // Tools Safety
+    toolsSafetyFile, setToolsSafetyFile,
+    toolsSafetyUrl, setToolsSafetyUrl,
 
     // Data handling
     isLoading, verificationOutputValues
