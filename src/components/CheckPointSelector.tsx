@@ -15,6 +15,7 @@ const CheckPointSelector = () => {
     { path: "/ne-voltage-check", name: "N-E Voltage Check" },
     { path: "/tools-safety", name: "Tools Safety" },
     { path: "/derrick", name: "Derrick" },
+    { path: "/earthing-check", name: "Earthing Check" },
   ];
   return (
     <div className='px-3 space-y-2'>

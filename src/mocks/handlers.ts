@@ -91,4 +91,14 @@ http.post('/tools-safety', async ({request}:any)=> {
       reason: 'Poles are detected',
     })
   }),
+  http.post('/earthing-check', async ({request}:any)=> {
+    const requestBody = await request.json();
+    console.log(requestBody)
+    return HttpResponse.json({
+      earthingDetection:{detetionCount:5,isDetected:false,avgDetection:0},
+      finalAnalysis: 'Non-Compliance',
+      reason: 'Earthing is not detected',
+    })
+  }),
+  
 ];

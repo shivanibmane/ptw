@@ -1,5 +1,6 @@
 import BarricadeSiteInput from './barricadedsites/BarricadeSiteInput'
 import DerrickInput from './derrick/DerrickInput'
+import EarthingCheckInput from './earthingcheck/EarthingCheckInput'
 import FirstAidKitInput from './firstaindkit/FirstAidKitInput'
 import IDCardVerificationInput from './idcardverification/IDCardVerificationInput'
 import ToolsSafetyInput from './toolssafety/ToolsSafetyInput'
@@ -12,7 +13,8 @@ const InputFields = ({ checkpointId }: any) => {
     "barricade-site": <BarricadeSiteInput />,
     "ne-voltage-check": <VoltageCheckInput />,
     "tools-safety": <ToolsSafetyInput />,
-    "derrick": <DerrickInput />
+    "derrick": <DerrickInput />,
+    "earthing-check": <EarthingCheckInput />
   }
   return (
     <>

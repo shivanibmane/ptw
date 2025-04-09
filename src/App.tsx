@@ -12,6 +12,7 @@ function App() {
         <Route path="/ne-voltage-check" element={<Home checkpointId="ne-voltage-check" />} />
         <Route path="/tools-safety" element={<Home checkpointId="tools-safety" />} />
         <Route path="/derrick" element={<Home checkpointId="derrick" />} />
+        <Route path="/earthing-check" element={<Home checkpointId="earthing-check" />} />
       </Routes>
     </>
   )

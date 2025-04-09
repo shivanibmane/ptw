@@ -34,6 +34,11 @@ const AppProvider = ({ children }: any) => {
   const [derrickFile, setDerrickFile] = useState(null)
   const [derrickUrl, setDerrickUrl] = useState(null)
 
+  // Earthing Check
+  const [earthingCheckFile, setEarthingCheckFile,] = useState(null)
+  const [earthingCheckUrl, setEarthingCheckUrl,
+  ] = useState(null)
+
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -48,6 +53,7 @@ const AppProvider = ({ children }: any) => {
       setUrl(URL.createObjectURL(file));
       event.target.value = "";
     }
+    setIsSelectedVerificationFile(false)
   };
 
   const handleFileDelete = (
@@ -119,6 +125,10 @@ const AppProvider = ({ children }: any) => {
     // Derrcik
     derrickFile, setDerrickFile,
     derrickUrl, setDerrickUrl,
+
+    // Earthing Check
+    earthingCheckFile, setEarthingCheckFile,
+    earthingCheckUrl, setEarthingCheckUrl,
 
     // Data handling
     isLoading, verificationOutputValues
