@@ -100,5 +100,15 @@ http.post('/tools-safety', async ({request}:any)=> {
       reason: 'Earthing is not detected',
     })
   }),
+  http.post('/fall-restraint', async ({request}:any)=> {
+    const requestBody = await request.json();
+    console.log(requestBody)
+    return HttpResponse.json({
+     isRope:true,
+     avgDetection:98,
+     finalAnalysis: 'Compliance',
+      reason: 'Rope is detected',
+    })
+  }),
   
 ];

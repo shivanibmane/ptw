@@ -7,6 +7,7 @@ import { SidebarTrigger } from "./ui/sidebar";
 import ToolsSafetyHome from "./toolssafety/ToolsSafetyHome";
 import DerrickHome from "./derrick/DerrickHome";
 import EarthingCheckHome from "./earthingcheck/EarthingCheckHome";
+import FallRestraintHome from "./FallRestraint/FallRestraintHome";
 
 const AppContent = ({ checkpointId }: any) => {
   const contentConfig: any = {
@@ -16,7 +17,8 @@ const AppContent = ({ checkpointId }: any) => {
     "ne-voltage-check": <NEVoltageCheckHome />,
     "tools-safety": <ToolsSafetyHome />,
     "derrick": <DerrickHome />,
-    "earthing-check": <EarthingCheckHome />
+    "earthing-check": <EarthingCheckHome />,
+    "fall-restraint": <FallRestraintHome />
 
   };
 

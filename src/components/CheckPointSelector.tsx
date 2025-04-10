@@ -4,19 +4,20 @@ import { AppContext } from './AppContext'
 import { useNavigate } from 'react-router-dom'
 import InputFields from './InputFields'
 
+const checkpoints = [
+  { path: "/id-card-verification", name: "ID Card Verification" },
+  { path: "/first-aid-kit", name: "First AID Kit" },
+  { path: "/barricade-site", name: "Barricade Site" },
+  { path: "/ne-voltage-check", name: "N-E Voltage Check" },
+  { path: "/tools-safety", name: "Tools Safety" },
+  { path: "/derrick", name: "Derrick" },
+  { path: "/earthing-check", name: "Earthing Check" },
+  { path: "/fall-restraint", name: "Fall Restraint" },
+];
 const CheckPointSelector = () => {
   const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile, }: any = useContext(AppContext);
-
   const navigate = useNavigate()
-  const checkpoints = [
-    { path: "/id-card-verification", name: "ID Card Verification" },
-    { path: "/first-aid-kit", name: "First AID Kit" },
-    { path: "/barricade-site", name: "Barricade Site" },
-    { path: "/ne-voltage-check", name: "N-E Voltage Check" },
-    { path: "/tools-safety", name: "Tools Safety" },
-    { path: "/derrick", name: "Derrick" },
-    { path: "/earthing-check", name: "Earthing Check" },
-  ];
+
   return (
     <div className='px-3 space-y-2'>
       <h2 className='text-[16px] font-semibold'>Select Checkpoint</h2>
@@ -26,7 +27,7 @@ const CheckPointSelector = () => {
         setIsSelectedVerificationFile(false)
       }} >
         <SelectTrigger>
-          <SelectValue placeholder="ID Card Verification" />
+          <SelectValue placeholder='ID Card Verification' />
         </SelectTrigger>
         <SelectContent >
           <SelectGroup>

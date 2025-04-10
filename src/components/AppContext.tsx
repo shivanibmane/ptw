@@ -39,6 +39,10 @@ const AppProvider = ({ children }: any) => {
   const [earthingCheckUrl, setEarthingCheckUrl,
   ] = useState(null)
 
+  // Fall Restraint
+  const [fallRestraintFile, setFallRestraintFile] = useState(null)
+  const [fallRestraintUrl, setFallRestraintUrl] = useState(null)
+
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -129,6 +133,10 @@ const AppProvider = ({ children }: any) => {
     // Earthing Check
     earthingCheckFile, setEarthingCheckFile,
     earthingCheckUrl, setEarthingCheckUrl,
+
+    // Fall Restraint
+    fallRestraintFile, setFallRestraintFile,
+    fallRestraintUrl, setFallRestraintUrl,
 
     // Data handling
     isLoading, verificationOutputValues
