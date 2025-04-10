@@ -1,11 +1,11 @@
 import BarricadeSiteInput from './barricadedsites/BarricadeSiteInput'
 import DerrickInput from './derrick/DerrickInput'
 import EarthingCheckInput from './earthingcheck/EarthingCheckInput'
-import FallRestraintInput from './FallRestraint/FallRestraintInput'
-import FirstAidKitInput from './firstaindkit/FirstAidKitInput'
+import FallRestraintInput from './fallrestraint/FallRestraintInput'
+import FirstAidKitInput from './firstaidkit/FirstAidKitInput'
 import IDCardVerificationInput from './idcardverification/IDCardVerificationInput'
 import ToolsSafetyInput from './toolssafety/ToolsSafetyInput'
-import VoltageCheckInput from './voltage/NEVoltageCheckInput'
+import VoltageCheckInput from './nevoltage/NEVoltageCheckInput'
 
 const InputFields = ({ checkpointId }: any) => {
   const fieldsConfig: any = {

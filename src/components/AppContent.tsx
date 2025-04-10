@@ -1,13 +1,13 @@
 
 import BarricadeSitetHome from "./barricadedsites/BarricadeSitetHome";
-import FirstAidKitHome from "./firstaindkit/FirstAidKitHome";
+import FirstAidKitHome from "./firstaidkit/FirstAidKitHome";
 import IDCardVerificationHome from "./idcardverification/IDCardVerificationHome";
-import NEVoltageCheckHome from "./voltage/NEVoltageCheckHome";
+import NEVoltageCheckHome from "./nevoltage/NEVoltageCheckHome";
 import { SidebarTrigger } from "./ui/sidebar";
 import ToolsSafetyHome from "./toolssafety/ToolsSafetyHome";
 import DerrickHome from "./derrick/DerrickHome";
 import EarthingCheckHome from "./earthingcheck/EarthingCheckHome";
-import FallRestraintHome from "./FallRestraint/FallRestraintHome";
+import FallRestraintHome from "./fallrestraint/FallRestraintHome";
 
 const AppContent = ({ checkpointId }: any) => {
   const contentConfig: any = {
@@ -19,7 +19,6 @@ const AppContent = ({ checkpointId }: any) => {
     "derrick": <DerrickHome />,
     "earthing-check": <EarthingCheckHome />,
     "fall-restraint": <FallRestraintHome />
-
   };
 
   return (
