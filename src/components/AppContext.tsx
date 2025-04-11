@@ -43,6 +43,10 @@ const AppProvider = ({ children }: any) => {
   const [fallRestraintFile, setFallRestraintFile] = useState(null)
   const [fallRestraintUrl, setFallRestraintUrl] = useState(null)
 
+  // Roof-edge Protection
+  const [roofEdgeProtectionFile, setRoofEdgeProtectionFile] = useState(null)
+  const [roofEdgeProtectionUrl, setRoofEdgeProtectionsetUrl] = useState(null)
+
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -137,6 +141,10 @@ const AppProvider = ({ children }: any) => {
     // Fall Restraint
     fallRestraintFile, setFallRestraintFile,
     fallRestraintUrl, setFallRestraintUrl,
+
+    //Roof-edge Protecton
+    roofEdgeProtectionFile, setRoofEdgeProtectionFile,
+    roofEdgeProtectionUrl, setRoofEdgeProtectionsetUrl,
 
     // Data handling
     isLoading, verificationOutputValues

@@ -8,6 +8,7 @@ import ToolsSafetyHome from "./toolssafety/ToolsSafetyHome";
 import DerrickHome from "./derrick/DerrickHome";
 import EarthingCheckHome from "./earthingcheck/EarthingCheckHome";
 import FallRestraintHome from "./fallrestraint/FallRestraintHome";
+import RoofEdgeProtectionHome from "./roofedgeprotection/RoofEdgeProtectionHome";
 
 const AppContent = ({ checkpointId }: any) => {
   const contentConfig: any = {
@@ -18,7 +19,8 @@ const AppContent = ({ checkpointId }: any) => {
     "tools-safety": <ToolsSafetyHome />,
     "derrick": <DerrickHome />,
     "earthing-check": <EarthingCheckHome />,
-    "fall-restraint": <FallRestraintHome />
+    "fall-restraint": <FallRestraintHome />,
+    "roof-edge-protection": <RoofEdgeProtectionHome />
   };
 
   return (

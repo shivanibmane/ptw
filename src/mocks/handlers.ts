@@ -110,5 +110,15 @@ http.post('/tools-safety', async ({request}:any)=> {
       reason: 'Rope is detected',
     })
   }),
+  http.post('/roof-edge-protection', async ({request}:any)=> {
+    const requestBody = await request.json();
+    console.log(requestBody)
+    return HttpResponse.json({
+     roofWallDetection:{isTrue:true,value:98},
+     roofRaillingDetection:{isTrue:true,value:98},
+     finalAnalysis: 'Compliance',
+      reason: 'Rope is detected',
+    })
+  }),
   
 ];

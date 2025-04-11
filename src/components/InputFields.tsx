@@ -6,6 +6,7 @@ import FirstAidKitInput from './firstaidkit/FirstAidKitInput'
 import IDCardVerificationInput from './idcardverification/IDCardVerificationInput'
 import ToolsSafetyInput from './toolssafety/ToolsSafetyInput'
 import VoltageCheckInput from './nevoltage/NEVoltageCheckInput'
+import RoofEdgeProtectionInput from './roofedgeprotection/RoofEdgeProtectionInput'
 
 const InputFields = ({ checkpointId }: any) => {
   const fieldsConfig: any = {
@@ -16,7 +17,8 @@ const InputFields = ({ checkpointId }: any) => {
     "tools-safety": <ToolsSafetyInput />,
     "derrick": <DerrickInput />,
     "earthing-check": <EarthingCheckInput />,
-    "fall-restraint": <FallRestraintInput />
+    "fall-restraint": <FallRestraintInput />,
+    "roof-edge-protection": <RoofEdgeProtectionInput />
   }
   return (
     <>
