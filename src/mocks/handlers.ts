@@ -11,7 +11,8 @@ http.post('/id-card-verification', async ({request}:any)=> {
           reason: 'ID card and face not matched'
         })}
     else if(type==="ID Card Verification")
-      {return HttpResponse.json({course:"E-STA",
+      {return HttpResponse.json({
+            course:"E-STA",
             designation:"SUPERVISOR",
             validationUpto:"12-03-24",
             dataValidation:true,
@@ -42,43 +43,43 @@ http.post('/barricade-site', async ({request}:any)=> {
       reason: 'Barricade detected',
     })
   }),
-http.post('/ne-voltage-check', async ({request}:any)=> {
-    const requestBody = await request.json();
-    console.log(requestBody)
-    return HttpResponse.json({
-      extaractedVoltage:117.0,
-      voltageValidation:true,
-      finalAnalysis: 'Compliance',
-      reason: 'voltage detected',
-    })
-  }),
-http.post('/tools-safety', async ({request}:any)=> {
-    const requestBody = await request.json();
-    console.log(requestBody)
-    return HttpResponse.json({
-      "processedImageUrl": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...", 
-      "detectionData": [
-        {
-          "detection_status": false,
-          "detection_cls": "non-insulated-tool",
-          "detection_id": 1,
-          "detection_conf": 0.88
-        },
-        {
-          "detection_status": false,
-          "detection_cls": "insulated-tool",
-          "detection_id": 2,
-          "detection_conf": 0.92
-        }
-      ],
-      "insulated_tools": 1,
-      "non_insulated_tools": 1,
-      "avg_detection_conf": 90.0,
-      "finalAnalysis": "Non-Compliance",
-      "reason": "Found 1 non-insulated tools which violates safety requirements.",
-      "is_insulated_tools_detected": true
-    })
-  }),
+// http.post('/ne-voltage-check', async ({request}:any)=> {
+//     const requestBody = await request.json();
+//     console.log(requestBody)
+//     return HttpResponse.json({
+//       extaractedVoltage:117.0,
+//       voltageValidation:true,
+//       finalAnalysis: 'Compliance',
+//       reason: 'voltage detected',
+//     })
+//   }),
+// http.post('/tools-safety', async ({request}:any)=> {
+//     const requestBody = await request.json();
+//     console.log(requestBody)
+//     return HttpResponse.json({
+//       "processedImageUrl": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...", 
+//       "detectionData": [
+//         {
+//           "detection_status": false,
+//           "detection_cls": "non-insulated-tool",
+//           "detection_id": 1,
+//           "detection_conf": 0.88
+//         },
+//         {
+//           "detection_status": false,
+//           "detection_cls": "insulated-tool",
+//           "detection_id": 2,
+//           "detection_conf": 0.92
+//         }
+//       ],
+//       "insulated_tools": 1,
+//       "non_insulated_tools": 1,
+//       "avg_detection_conf": 90.0,
+//       "finalAnalysis": "Non-Compliance",
+//       "reason": "Found 1 non-insulated tools which violates safety requirements.",
+//       "is_insulated_tools_detected": true
+//     })
+//   }),
   http.post('/derrick', async ({request}:any)=> {
     const requestBody = await request.json();
     console.log(requestBody)
@@ -91,15 +92,15 @@ http.post('/tools-safety', async ({request}:any)=> {
       reason: 'Poles are detected',
     })
   }),
-  http.post('/earthing-check', async ({request}:any)=> {
-    const requestBody = await request.json();
-    console.log(requestBody)
-    return HttpResponse.json({
-      earthingDetection:{detetionCount:5,isDetected:false,avgDetection:0},
-      finalAnalysis: 'Non-Compliance',
-      reason: 'Earthing is not detected',
-    })
-  }),
+  // http.post('/earthing-check', async ({request}:any)=> {
+  //   const requestBody = await request.json();
+  //   console.log(requestBody)
+  //   return HttpResponse.json({
+  //     earthingDetection:{detetionCount:5,isDetected:false,avgDetection:0},
+  //     finalAnalysis: 'Non-Compliance',
+  //     reason: 'Earthing is not detected',
+  //   })
+  // }),
   http.post('/fall-restraint', async ({request}:any)=> {
     const requestBody = await request.json();
     console.log(requestBody)

@@ -7,7 +7,7 @@ const FallRestraintOutput = () => {
     <div className="flex flex-col gap-4 items-center ">
       <div className="flex flex-col xl:flex-row gap-5 justify-center mt-9 xl:mt-9 " >
         <div className={`flex flex-col border items-center  w-[300px] h-[100px]  justify-center py-3  px-8 gap-3 ${verificationOutputValues?.isRope === true ? "bg-green-200" : "bg-red-100"} rounded-sm`}>
-          <h1 className="font-bold text-md">Earthing Detection
+          <h1 className="font-bold text-md">Rope Detection
           </h1>
           <p className="text-md font-semibold">{verificationOutputValues?.isRope ? "True" : "False"}</p>
         </div>

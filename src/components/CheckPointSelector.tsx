@@ -1,7 +1,7 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from './AppContext'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import InputFields from './InputFields'
 
 const checkpoints = [
@@ -18,17 +18,26 @@ const checkpoints = [
 const CheckPointSelector = () => {
   const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile, }: any = useContext(AppContext);
   const navigate = useNavigate()
+  const location = useLocation();
+  const [selectedPath, setSelectedPath] = useState("");
+
+  useEffect(() => {
+    setSelectedPath(location.pathname);
+    setSelectedVerificationCheckpoint(location.pathname);
+  }, [location.pathname]);
+
 
   return (
     <div className='px-3 space-y-2'>
       <h2 className='text-[16px] font-semibold'>Select Checkpoint</h2>
       <Select onValueChange={(value) => {
+        setSelectedPath(value)
         setSelectedVerificationCheckpoint(value);
         navigate(value)
         setIsSelectedVerificationFile(false)
-      }} >
+      }} value={selectedPath}>
         <SelectTrigger>
-          <SelectValue placeholder='ID Card Verification' />
+          <SelectValue />
         </SelectTrigger>
         <SelectContent >
           <SelectGroup>

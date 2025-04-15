@@ -28,21 +28,22 @@ const IDVerificationOutput = () => {
       </div >
   } else if (selectedCheckbox === "ID Card Verification") {
     selectedCheckPointOutput = <>
-      <div className="flex flex-col  xl:flex-row justify-between gap-5 mt-9 xl:mt-9">
+      <div className="flex flex-col  xl:flex-row justify-between  gap-5 mt-9 xl:mt-9">
         <IDCardVerificationCard title="Course" value={verificationOutputValues?.course} />
         <IDCardVerificationCard title="Designation" value={verificationOutputValues?.designation} />
         <IDCardVerificationCard title="Validation Upto" value={verificationOutputValues?.validationUpto} />
-        <div className={`flex flex-col border items-center justify-center xl:w-[200px]  px-8 h-[100px] gap-3 ${verificationOutputValues?.dataValidation === true ? "bg-green-200" : "bg-red-100"}  rounded-sm`}>
+        <div className={`flex flex-col border items-center justify-center sm:w-[300px] xl:w-[250px]  px-8 h-[100px] gap-3 ${verificationOutputValues?.dataValidation === true ? "bg-green-200" : "bg-red-100"}  rounded-sm`}>
           <h1 className="font-bold text-md">Validation Date
           </h1>
           <p className="text-md font-semibold">{verificationOutputValues?.dataValidation === true ? "True" : "False"}</p>
         </div>
-        <div className={`flex flex-col border  items-center justify-center xl:w-[200px]  px-8 h-[100px] gap-3 ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"} rounded-sm`}>
-          <h1 className="font-bold text-md">Final Analysis
-          </h1>
-          <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis}</p>
-        </div>
+
       </div >
+      <div className={`flex flex-col border  items-center justify-center sm:w-[300px] xl:w-[250px]  px-8 h-[100px] gap-3 ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"} rounded-sm`}>
+        <h1 className="font-bold text-md">Final Analysis
+        </h1>
+        <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis}</p>
+      </div>
       <div className={`flex w-9/12 gap-1 ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"} border py-2 my-3 px-2`}>
         <h3 className="font-medium">Reason: </h3>
         <p>{verificationOutputValues?.reason}

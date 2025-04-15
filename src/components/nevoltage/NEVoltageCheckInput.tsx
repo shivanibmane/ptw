@@ -5,7 +5,7 @@ import { AppContext } from "../AppContext";
 
 const NEVoltageCheckInput = () => {
   const { handleFileUpload, handleFileDelete, nevoltageCheckFile, setNEVoltageCheckFile,
-    nevoltageCheckUrl, setNEVoltageCheckUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
+    setNEVoltageCheckUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
 
   useEffect(() => {
     setNEVoltageCheckFile(null);
@@ -21,7 +21,7 @@ const NEVoltageCheckInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setNEVoltageCheckFile, setNEVoltageCheckUrl) }}
           imageFile={nevoltageCheckFile}
           deleteFile={() => handleFileDelete(setNEVoltageCheckFile, setNEVoltageCheckUrl)}
-        />{nevoltageCheckFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("/ne-voltage-check", { nevoltageCheckUrl: nevoltageCheckUrl })}>Process</Button>}
+        />{nevoltageCheckFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/check-voltage", nevoltageCheckFile)}>Process</Button>}
       </div>
     </div>
   )

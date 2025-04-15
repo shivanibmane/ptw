@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 export const AppContext = createContext(null)
 
@@ -27,8 +27,8 @@ const AppProvider = ({ children }: any) => {
 
 
   // Tools Safety
-  const [toolsSafetyFile, setToolsSafetyFile] = useState(null)
-  const [toolsSafetyUrl, setToolsSafetyUrl] = useState(null)
+  const [toolsSafetyFile, setToolsSafetyFile]: any = useState(null)
+  const [toolsSafetyUrl, setToolsSafetyUrl]: any = useState(null)
 
   // Derrick 
   const [derrickFile, setDerrickFile] = useState(null)
@@ -63,7 +63,6 @@ const AppProvider = ({ children }: any) => {
     }
     setIsSelectedVerificationFile(false)
   };
-
   const handleFileDelete = (
     setFile: Function,
     setUrl: Function
@@ -77,20 +76,20 @@ const AppProvider = ({ children }: any) => {
     setSelectedVerificationCheckpoint((prev) => (prev === type ? null : type)); // Toggle selection
   };
 
+  const verificationInputData = async (endpoint: any, file: any) => {
 
-  const verificationInputData = async (endpoint: any, enpointPostData: any) => {
     setIsSelectedVerificationFile(true)
     try {
+      const formData = new FormData()
+      formData.append("imageFile", file)
+      setIsLoading(true)
       const response = await fetch(endpoint, {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(enpointPostData)
+        body: formData,
       })
       const data = await response.json()
-      setVerificationOutputValues(data)
+      setIsLoading(true)
+      await setVerificationOutputValues(data)
       console.log(data)
       setIsLoading(false)
       if (data.finalAnalysis === "Compliance") {
@@ -149,6 +148,9 @@ const AppProvider = ({ children }: any) => {
     // Data handling
     isLoading, verificationOutputValues
   }
+
+  useEffect(() => {
+  }, [verificationInputData])
 
   return <AppContext.Provider value={value}>
     {children}

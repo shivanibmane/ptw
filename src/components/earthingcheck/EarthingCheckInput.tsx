@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 const EarthingCheckInput = () => {
   const { handleFileUpload, handleFileDelete, earthingCheckFile, setEarthingCheckFile,
-    earthingCheckUrl, setEarthingCheckUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
+    setEarthingCheckUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
 
   useEffect(() => {
     setEarthingCheckFile(null);
@@ -21,7 +21,7 @@ const EarthingCheckInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setEarthingCheckFile, setEarthingCheckUrl) }}
           imageFile={earthingCheckFile}
           deleteFile={() => handleFileDelete(setEarthingCheckFile, setEarthingCheckUrl)}
-        />{earthingCheckFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("/earthing-check", { earthingCheckUrl: earthingCheckUrl })}>Process</Button>}
+        />{earthingCheckFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/earthing-check", earthingCheckFile)}>Process</Button>}
       </div>
     </div>
   )

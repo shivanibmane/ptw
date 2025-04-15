@@ -13,7 +13,7 @@ const FileUploader = ({ title, fileUpload, imageFile, deleteFile }: any) => {
           <CardTitle className="text-xs">Drag and drop file here</CardTitle>
         </CardHeader>
         <CardFooter onClick={() => { inputFileRef.current.click(); }}>
-          <Button variant="destructive" >Brwoser Files<input
+          <Button variant="destructive" >Browse File<input
             className="hidden"
             ref={inputFileRef}
             onChange={fileUpload}
