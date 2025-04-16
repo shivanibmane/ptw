@@ -1,17 +1,21 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
+import Loader from "../Loader"
 // import ToolsSafetyOutputCard from "./ToolsSafetyOutputCard"
 
 const ToolsSafetyOutput = () => {
   const { verificationOutputValues, isLoading }: any = useContext(AppContext)
-  const nonInsulatedTools = verificationOutputValues?.detectionData?.filter((detection: any) => detection?.detection_cls === "non-insulated-tool")
-  const insulatedTools = verificationOutputValues?.detectionData?.filter((detection: any) => detection?.detection_cls === "insulated-tool")
-  const totalToolsCount = verificationOutputValues?.insulated_tools +
-    verificationOutputValues?.non_insulated_tools
-
+  const nonInsulatedTools = verificationOutputValues?.detections
+    ?.filter((detection: any) => detection?.detection_cls === "non-insulated-tool")
+  const insulatedTools = verificationOutputValues?.detections
+    ?.filter((detection: any) => detection?.detection_cls === "insulated-tool")
+  const totalToolsCount = verificationOutputValues?.non_insulated_tools_count +
+    verificationOutputValues?.insulated_tools_count
+  console.log(insulatedTools)
+  console.log(nonInsulatedTools)
 
   if (isLoading) {
-    return <>Loading...</>
+    return <div className="flex justify-center items-center" ><Loader /></div>
   }
 
   return (!isLoading &&
@@ -21,13 +25,13 @@ const ToolsSafetyOutput = () => {
           > 0 ? "bg-green-200" : "bg-red-100"}`}>
           <h1 className="font-bold text-md">{"Insulated Tools "}
           </h1>
-          <p className="text-md font-semibold">{verificationOutputValues?.insulated_tools > 0 ? "True" : "False"}</p>
+          <p className="text-md font-semibold">{verificationOutputValues?.insulated_tools_count > 0 ? "True" : "False"}</p>
         </div>
-        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${verificationOutputValues?.insulated_tools
+        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${verificationOutputValues?.insulated_tools_count
           ? "bg-yellow-100" : "bg-red-100"} rounded-sm text-center`}>
           <h1 className="font-bold text-md">{"Total Insulated Tools"}
           </h1>
-          <p className="text-md font-semibold">{verificationOutputValues?.insulated_tools}</p>
+          <p className="text-md font-semibold">{verificationOutputValues?.insulated_tools_count}</p>
         </div>
         <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${insulatedTools?.length > 0 ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
           <h1 className="font-bold text-md">
@@ -38,17 +42,17 @@ const ToolsSafetyOutput = () => {
       </div>
 
       <div className="flex flex-col xl:flex-row gap-5">
-        <div className={`flex flex-col border w-[300px] items-center justify-center px-8 h-[100px] gap-3 rounded-sm ${verificationOutputValues?.non_insulated_tools
+        <div className={`flex flex-col border w-[300px] items-center justify-center px-8 h-[100px] gap-3 rounded-sm ${verificationOutputValues?.non_insulated_tools_count
           > 0 ? "bg-green-200" : "bg-red-100"}`}>
           <h1 className="font-bold text-md">{"Non-Insulated Tools "}
           </h1>
-          <p className="text-md font-semibold">{verificationOutputValues?.non_insulated_tools > 0 ? "True" : "False"}</p>
+          <p className="text-md font-semibold">{verificationOutputValues?.non_insulated_tools_count > 0 ? "True" : "False"}</p>
         </div>
-        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${verificationOutputValues?.non_insulated_tools
-          ? "bg-yellow-100" : "bg-red-100"} rounded-sm text-center`}>
+        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${verificationOutputValues?.non_insulated_tools_count ? "bg-yellow-100" : "bg-red-100"} rounded-sm text-center`}>
           <h1 className="font-bold text-md">{"Total Non-Insulated Tools"}
           </h1>
-          <p className="text-md font-semibold">{verificationOutputValues?.non_insulated_tools}</p>
+          <p className="text-md font-semibold">{verificationOutputValues?.non_insulated_tools_count
+          }</p>
         </div>
         <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${nonInsulatedTools?.length > 0 ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
           <h1 className="font-bold text-md">

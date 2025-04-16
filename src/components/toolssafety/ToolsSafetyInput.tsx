@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { AppContext } from "../AppContext";
 
 const ToolsSafetyInput = () => {
-  const { handleFileUpload, handleFileDelete, toolsSafetyFile, setToolsSafetyFile, toolsSafetyUrl, setToolsSafetyUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
+  const { handleFileUpload, handleFileDelete, toolsSafetyFile, setToolsSafetyFile, setToolsSafetyUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
 
   useEffect(() => {
     setToolsSafetyFile(null);
@@ -20,7 +20,7 @@ const ToolsSafetyInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setToolsSafetyFile, setToolsSafetyUrl) }}
           imageFile={toolsSafetyFile}
           deleteFile={() => handleFileDelete(setToolsSafetyFile, setToolsSafetyUrl)}
-        />{toolsSafetyFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/tools-safety", { toolsSafetyUrl: toolsSafetyUrl })}>Process</Button>}
+        />{toolsSafetyFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/detect-tools", toolsSafetyFile)}>Process</Button>}
       </div>
     </div>
   )

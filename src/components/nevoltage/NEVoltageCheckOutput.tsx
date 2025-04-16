@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
+import Loader from "../Loader"
 
 const NEVoltageCheckOutput = () => {
   const { verificationOutputValues, isLoading }: any = useContext(AppContext)
@@ -7,7 +8,7 @@ const NEVoltageCheckOutput = () => {
 
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div className="flex justify-center items-center" ><Loader /></div>
   }
   return (!isLoading &&
     <>
@@ -27,19 +28,17 @@ const NEVoltageCheckOutput = () => {
               === true ? "True" : "False"}</p>
           </div>
 
-          {/* Change the code later  */}
-
           <div className={`flex flex-col border items-center justify-center w-[300px] h-[100px] px-8 gap-3
-           ${neVoltageOutputData?.voltage_validation
-              === true ? "bg-green-300" : "bg-red-200"}   rounded-sm`}>
+           ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"}   rounded-sm`}>
             <h1 className="font-bold text-md">Final Analysis
             </h1>
-            <p className="text-md font-semibold">{neVoltageOutputData?.voltage_validation === true ? "Compliance" : "Non-compliance"}</p>
+            <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis
+              === "Compliance" ? "Compliance" : "Non-compliance"}</p>
           </div>
         </div >
-        <div className={`flex gap-1 ${neVoltageOutputData?.voltage_validation ? "bg-green-300" : "bg-red-200"} border w-9/12 py-2 px-2 my-2`}>
+        <div className={`flex gap-1 ${verificationOutputValues?.is_compliant ? "bg-green-300" : "bg-red-200"} border w-9/12 py-2 px-2 my-2`}>
           <h3 className="font-medium">Reason:</h3>
-          <p>{neVoltageOutputData?.voltage_validation === true ? "Valid Voltage" : "Voltage is not safe"}
+          <p>{verificationOutputValues?.reason}
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
+import Loader from "../Loader"
 
 const BarricadeSiteOutput = () => {
   const { verificationOutputValues, isLoading }: any = useContext(AppContext)
@@ -7,7 +8,7 @@ const BarricadeSiteOutput = () => {
     === "barricade")
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div className="flex justify-center items-center" ><Loader /></div>
   }
 
   return (!isLoading &&
@@ -27,22 +28,18 @@ const BarricadeSiteOutput = () => {
           <p className="text-md font-semibold">{barricadeDetectionData?.detection_conf > 0 ? barricadeDetectionData?.detection_conf
             : 0}%</p>
         </div>
+        <div className={`flex flex-col border items-center justify-center w-[300px] h-[100px] px-8 gap-3 ${verificationOutputValues?.finalAnalysis
 
-        {/* If backend code chnage it make the changes here */}
-
-        <div className={`flex flex-col border items-center justify-center w-[300px] h-[100px] px-8 gap-3 ${barricadeDetectionData?.detection_status
-          === true ? "bg-green-300" : "bg-red-200"}   rounded-sm`}>
+          === "Compliance" ? "bg-green-300" : "bg-red-200"}   rounded-sm`}>
           <h1 className="font-bold text-md">Final Analysis
           </h1>
-          <p className="text-md font-semibold">{barricadeDetectionData?.detection_status
-            === true ? "Compliance" : "Non-Compliance"}</p>
+          <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis}</p>
         </div>
       </div >
-      <div className={`flex gap-1 ${barricadeDetectionData?.detection_status
-        === true ? "bg-green-300" : "bg-red-200"} border w-9/12 py-2 px-2 my-2`}>
+      <div className={`flex gap-1 ${verificationOutputValues?.is_compliant === true
+        ? "bg-green-300" : "bg-red-200"} border w-9/12 py-2 px-2 my-2`}>
         <h3 className="font-medium">Reason:</h3>
-        <p>{barricadeDetectionData?.detection_status
-          === true ? "Barricade Detect" : "No Barricade Detect"}b
+        <p>{verificationOutputValues?.reason}
         </p>
       </div>
     </div>

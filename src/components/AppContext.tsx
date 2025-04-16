@@ -92,15 +92,22 @@ const AppProvider = ({ children }: any) => {
       await setVerificationOutputValues(data)
       console.log(data)
       setIsLoading(false)
-      if (data.finalAnalysis === "Compliance") {
-        toast.success("Reason", {
-          description: data.reason
-        });
+      if (data.finalAnalysis) {
+        if (data.finalAnalysis === "Compliance") {
+          toast.success("Reason", {
+            description: data.reason
+          });
+        } else {
+          toast.error("Reason", {
+            description: data.reason
+          });
+        }
       } else {
-        toast.error("Reason", {
-          description: data.reason
+        toast.warning("Reason", {
+          description: "This is missing data in API"
         });
       }
+
     } catch (e) { console.log(e) }
   }
 

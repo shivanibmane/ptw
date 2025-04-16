@@ -5,6 +5,7 @@
 
 ### 1️⃣ Clone the Repository
 git clone https://github.com/shivanibmane/ptw.git
+cd ptw
 
 
 ```
