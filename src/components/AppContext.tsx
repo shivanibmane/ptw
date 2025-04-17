@@ -90,7 +90,6 @@ const AppProvider = ({ children }: any) => {
       const data = await response.json()
       setIsLoading(true)
       await setVerificationOutputValues(data)
-      console.log(data)
       setIsLoading(false)
       if (data.finalAnalysis) {
         if (data.finalAnalysis === "Compliance") {

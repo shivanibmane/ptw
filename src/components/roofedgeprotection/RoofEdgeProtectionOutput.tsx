@@ -1,15 +1,22 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
 import RoofEdgeProtectionOutputCard from "./RoofEdgeProtectionOutputCard"
+import Loader from "../Loader"
 
 const RoofEdgeProtectionOutput = () => {
-  const { verificationOutputValues }: any = useContext(AppContext)
+  const { verificationOutputValues, isLoading }: any = useContext(AppContext)
+
+  if (isLoading) {
+    return <div className="flex justify-center items-center" ><Loader /></div>
+  }
   return (
     <div className="flex flex-col gap-4 items-center ">
       <div className="flex flex-col xl:flex-row gap-5 justify-center items-center mt-9 xl:mt-9 " >
 
-        <RoofEdgeProtectionOutputCard roofEdgeDecteionData={verificationOutputValues?.roofWallDetection} title="Roof-edge Wall Detection" />
-        <RoofEdgeProtectionOutputCard roofEdgeDecteionData={verificationOutputValues?.roofRaillingDetection} title="Roof-edge Railling Detection" />
+        <RoofEdgeProtectionOutputCard roofEdgeDecteionData={verificationOutputValues?.roofWallDetection
+
+        } title="Roof-edge Wall Detection" />
+        <RoofEdgeProtectionOutputCard roofEdgeDecteionData={verificationOutputValues?.roofRailingDetection} title="Roof-edge Railling Detection" />
       </div >
       <div className={`flex flex-col border items-center justify-center w-[300px] xl:w-[250px] h-[100px] px-8 gap-3
               ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"}   rounded-sm`}>

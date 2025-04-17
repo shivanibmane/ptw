@@ -1,10 +1,14 @@
 import { useContext } from "react"
 import FirstAidKitOutputCard from "./FirstAidKitOutputCard"
 import { AppContext } from "../AppContext"
+import Loader from "../Loader"
 
 
 const FirstAidKitOutput = () => {
-  const { verificationOutputValues }: any = useContext(AppContext)
+  const { verificationOutputValues, isLoading }: any = useContext(AppContext)
+  if (isLoading) {
+    return <div className="flex justify-center items-center" ><Loader /></div>
+  }
   return (
     <div className="mb-3 space-y-2.5 flex flex-col items-center ">
       <FirstAidKitOutputCard firstAidBoxItemsDetection={verificationOutputValues} />

@@ -5,10 +5,8 @@ import Loader from "../Loader"
 
 const ToolsSafetyOutput = () => {
   const { verificationOutputValues, isLoading }: any = useContext(AppContext)
-  const nonInsulatedTools = verificationOutputValues?.detections
-    ?.filter((detection: any) => detection?.detection_cls === "non-insulated-tool")
-  const insulatedTools = verificationOutputValues?.detections
-    ?.filter((detection: any) => detection?.detection_cls === "insulated-tool")
+  const nonInsulatedTools = verificationOutputValues?.detection?.filter((detectedItems: any) => detectedItems?.detection_cls === "non-insulated-tool")
+  const insulatedTools = verificationOutputValues?.detections?.filter((detectedItems: any) => detectedItems?.detection_cls === "insulated-tool")
   const totalToolsCount = verificationOutputValues?.non_insulated_tools_count +
     verificationOutputValues?.insulated_tools_count
 
@@ -73,7 +71,8 @@ const ToolsSafetyOutput = () => {
           <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis}</p>
         </div>
       </div>
-      <div className={`flex gap-1 w-9/12 xl:w-full ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"} border  py-2 px-2`}>
+      <div className={`flex gap-1 w-full  ${verificationOutputValues?.
+        is_compliant === true ? "bg-green-300" : "bg-red-200"} border  py-2 px-2`}>
         <p><strong className="font-medium">Reason: </strong>{verificationOutputValues?.reason}
         </p>
       </div>
