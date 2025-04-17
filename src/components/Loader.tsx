@@ -1,6 +1,5 @@
 import { Spinner } from "./ui/spinner"
 
-
 const Loader = () => {
   return (
     <>

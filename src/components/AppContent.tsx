@@ -7,7 +7,7 @@ import { SidebarTrigger } from "./ui/sidebar";
 import ToolsSafetyHome from "./toolssafety/ToolsSafetyHome";
 import DerrickHome from "./derrick/DerrickHome";
 import EarthingCheckHome from "./earthingcheck/EarthingCheckHome";
-import FallRestraintHome from "./fallrestraint/FallRestraintHome";
+import FallRestraintHome from './fallrestraint/FallRestraintHome';
 import RoofEdgeProtectionHome from "./roofedgeprotection/RoofEdgeProtectionHome";
 
 const AppContent = ({ checkpointId }: any) => {

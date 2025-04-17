@@ -11,8 +11,7 @@ const ToolsSafetyOutput = () => {
     ?.filter((detection: any) => detection?.detection_cls === "insulated-tool")
   const totalToolsCount = verificationOutputValues?.non_insulated_tools_count +
     verificationOutputValues?.insulated_tools_count
-  console.log(insulatedTools)
-  console.log(nonInsulatedTools)
+
 
   if (isLoading) {
     return <div className="flex justify-center items-center" ><Loader /></div>
@@ -21,7 +20,7 @@ const ToolsSafetyOutput = () => {
   return (!isLoading &&
     <div className="mb-3 space-y-2.5 flex flex-col  items-center">
       <div className="flex flex-col xl:flex-row gap-5">
-        <div className={`flex flex-col border w-[300px] items-center justify-center px-8 h-[100px] gap-3 rounded-sm ${verificationOutputValues?.insulated_tools
+        <div className={`flex flex-col border w-[300px] items-center justify-center px-8 h-[100px] gap-3 rounded-sm ${verificationOutputValues?.insulated_tools_count
           > 0 ? "bg-green-200" : "bg-red-100"}`}>
           <h1 className="font-bold text-md">{"Insulated Tools "}
           </h1>

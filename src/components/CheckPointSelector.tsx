@@ -11,7 +11,6 @@ const checkpoints = [
   { path: "/earthing-check", name: "Earthing Check" },
   { path: "/ne-voltage-check", name: "N-E Voltage Check" },
   { path: "/derrick", name: "Derrick" },
-
   { path: "/tools-safety", name: "Tools Safety" },
   { path: "/fall-restraint", name: "Fall Restraint" },
   { path: "/roof-edge-protection", name: "Roof-edge Protection" },
