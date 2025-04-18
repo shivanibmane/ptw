@@ -1,5 +1,5 @@
 
-import BarricadeSitetHome from "./barricadedsites/BarricadeSitetHome";
+import BarricadeSitetHome from "./barricadedsites/BarricadeSiteHome";
 import FirstAidKitHome from "./firstaidkit/FirstAidKitHome";
 import IDCardVerificationHome from "./idcardverification/IDCardVerificationHome";
 import NEVoltageCheckHome from "./nevoltage/NEVoltageCheckHome";

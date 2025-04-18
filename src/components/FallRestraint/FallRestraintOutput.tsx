@@ -1,9 +1,13 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
+import Loader from "../Loader"
 
 const FallRestraintOutput = () => {
-  const { verificationOutputValues }: any = useContext(AppContext)
-  return (
+  const { verificationOutputValues, isLoading }: any = useContext(AppContext)
+  if (isLoading) {
+    return <div className="flex justify-center items-center" ><Loader /></div>
+  }
+  return (!isLoading &&
     <div className="flex flex-col gap-4 items-center ">
       <div className="flex flex-col xl:flex-row gap-5 justify-center mt-9 xl:mt-9 " >
         <div className={`flex flex-col border items-center  w-[300px] h-[100px]  justify-center py-3  px-8 gap-3 ${verificationOutputValues?.isRope === true ? "bg-green-200" : "bg-red-100"} rounded-sm`}>

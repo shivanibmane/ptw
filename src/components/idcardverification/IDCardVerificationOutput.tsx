@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
 import IDCardVerificationCard from "./IDCardVerificationCard";
+import Loader from "../Loader";
 
 const IDVerificationOutput = () => {
   const { selectedCheckbox, verificationOutputValues, isLoading }: any = useContext(AppContext)
@@ -51,10 +52,13 @@ const IDVerificationOutput = () => {
       </div>
     </>
   }
+  if (isLoading) {
+    return <div className="flex  justify-center items-center" ><Loader /></div>
+  }
   return (
     <>
 
-      {isLoading ? <h1>Loading...</h1> : selectedCheckPointOutput}
+      {!isLoading && selectedCheckPointOutput}
     </>
 
   )

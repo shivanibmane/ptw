@@ -12,9 +12,7 @@ const RoofEdgeProtectionOutput = () => {
   return (
     <div className="flex flex-col gap-4 items-center ">
       <div className="flex flex-col xl:flex-row gap-5 justify-center items-center mt-9 xl:mt-9 " >
-
         <RoofEdgeProtectionOutputCard roofEdgeDecteionData={verificationOutputValues?.roofWallDetection
-
         } title="Roof-edge Wall Detection" />
         <RoofEdgeProtectionOutputCard roofEdgeDecteionData={verificationOutputValues?.roofRailingDetection} title="Roof-edge Railling Detection" />
       </div >

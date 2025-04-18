@@ -7,8 +7,8 @@ import { AppContext } from "../AppContext"
 export const verifactionCheckPointTypes = [{ id: "face-verification", type: "Face Verification" }, { id: "id-card-verifications", type: "ID Card Verification" },];
 const IDCardVerificationInput = () => {
   const {
-    idCardImageFile, idCardImageUrl, rawFaceImageUrl, rawFaceImageFile, setIsSelectedVerificationFile, setIdCardImageFile, setRawFaceImageFile, setIdCardImageUrl,
-    setRawFaceImageUrl, handleFileDelete, handleFileUpload, selectedCheckbox, setSelectedCheckbox, verificationInputData }: any = useContext(AppContext)
+    idCardImageFile, idCardImageUrl, personImageUrl, personImageFile, setIsSelectedVerificationFile, setIdCardImageFile, setPersonImageFile, setIdCardImageUrl,
+    setPersonImageUrl, handleFileDelete, handleFileUpload, selectedCheckbox, setSelectedCheckbox, verificationInputData }: any = useContext(AppContext)
 
   let selectedCheckPointInput;
 
@@ -17,8 +17,8 @@ const IDCardVerificationInput = () => {
   };
 
   useEffect(() => {
-    setIdCardImageFile(null); setRawFaceImageFile(null); setIdCardImageUrl(null);
-    setRawFaceImageUrl(null); setIsSelectedVerificationFile(false)
+    setIdCardImageFile(null); setPersonImageFile(null); setIdCardImageUrl(null);
+    setPersonImageUrl(null); setIsSelectedVerificationFile(false)
   }, [selectedCheckbox])
 
   if (selectedCheckbox === "Face Verification") {
@@ -31,11 +31,11 @@ const IDCardVerificationInput = () => {
       />
       <FileUploader
         title="Upload Person Image"
-        fileUpload={(event: any) => handleFileUpload(event, setRawFaceImageFile, setRawFaceImageUrl)}
-        imageFile={rawFaceImageFile}
-        deleteFile={() => handleFileDelete(setRawFaceImageFile, setRawFaceImageUrl)}
+        fileUpload={(event: any) => handleFileUpload(event, setPersonImageFile, setPersonImageUrl)}
+        imageFile={personImageFile}
+        deleteFile={() => handleFileDelete(setPersonImageFile, setPersonImageUrl)}
       />
-      {idCardImageFile && rawFaceImageFile && <Button variant="destructive" onClick={() => { verificationInputData("/id-card-verification", { type: selectedCheckbox, idCardUrl: idCardImageUrl, rawFaceImageUrl: rawFaceImageUrl }) }}>Process</Button>}
+      {idCardImageFile && personImageFile && <Button variant="destructive" onClick={() => { verificationInputData("/id-card-verification", { type: selectedCheckbox, idCardUrl: idCardImageUrl, personImageUrl: personImageUrl }) }}>Process</Button>}
     </div>
   } else if (selectedCheckbox === "ID Card Verification") {
     selectedCheckPointInput = <div>

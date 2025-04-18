@@ -4,10 +4,10 @@ import { AppContext } from "../AppContext";
 import FileUploader from "../FileUploader";
 
 const FirstAidKitInput = () => {
-  const { handleFileDelete, handleFileUpload, firstAidKitImageFile, setfirstAidKitImageFile, setfirstAidKitImageUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
+  const { handleFileDelete, handleFileUpload, firstAidKitImageFile, setFirstAidKitImageFile, setfirstAidKitImageUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
 
   useEffect(() => {
-    setfirstAidKitImageFile(null)
+    setFirstAidKitImageFile(null)
     setfirstAidKitImageUrl(null)
     setIsSelectedVerificationFile(false)
   }, [])
@@ -17,9 +17,9 @@ const FirstAidKitInput = () => {
       <div className="space-y-3 mt-3">
         <FileUploader
           title="Upload First Aid Box Image"
-          fileUpload={(event: any) => { handleFileUpload(event, setfirstAidKitImageFile, setfirstAidKitImageUrl) }}
+          fileUpload={(event: any) => { handleFileUpload(event, setFirstAidKitImageFile, setfirstAidKitImageUrl) }}
           imageFile={firstAidKitImageFile}
-          deleteFile={() => handleFileDelete(setfirstAidKitImageFile, setfirstAidKitImageUrl)}
+          deleteFile={() => handleFileDelete(setFirstAidKitImageFile, setfirstAidKitImageUrl)}
         />{firstAidKitImageFile && <Button variant="destructive" className="my-2" onClick={() => { verificationInputData('http://localhost:8000/api/first-aid-kit', firstAidKitImageFile) }}>Process</Button>}
       </div>
     </div>

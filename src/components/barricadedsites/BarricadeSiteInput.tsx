@@ -4,11 +4,11 @@ import { AppContext } from "../AppContext"
 import { Button } from "../ui/button"
 
 const BarricadeSiteInput = () => {
-  const { handleFileUpload, handleFileDelete, barricadeSiteFile, setBarricadeSiteFile, setBarricadeSitetImageUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
+  const { handleFileUpload, handleFileDelete, barricadeSiteFile, setBarricadeSiteFile, setBarricadeSiteImageUrl, setIsSelectedVerificationFile, verificationInputData }: any = useContext(AppContext)
 
   useEffect(() => {
     setBarricadeSiteFile(null);
-    setBarricadeSitetImageUrl(null)
+    setBarricadeSiteImageUrl(null)
     setIsSelectedVerificationFile(null)
   }, [])
 
@@ -17,9 +17,9 @@ const BarricadeSiteInput = () => {
       <div className="space-y-3 mt-3">
         <FileUploader
           title="Upload Barricade Site Image"
-          fileUpload={(event: any) => { handleFileUpload(event, setBarricadeSiteFile, setBarricadeSitetImageUrl) }}
+          fileUpload={(event: any) => { handleFileUpload(event, setBarricadeSiteFile, setBarricadeSiteImageUrl) }}
           imageFile={barricadeSiteFile}
-          deleteFile={() => handleFileDelete(setBarricadeSiteFile, setBarricadeSitetImageUrl)}
+          deleteFile={() => handleFileDelete(setBarricadeSiteFile, setBarricadeSiteImageUrl)}
         />{barricadeSiteFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/detect-barricades", barricadeSiteFile)}>Process</Button>}
       </div>
     </div>

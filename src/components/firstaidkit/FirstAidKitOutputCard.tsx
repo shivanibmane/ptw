@@ -10,9 +10,9 @@ const FirstAidKitOutputCard = ({ firstAidBoxItemsDetection }: any) => {
             <p className="text-md font-semibold">{firstAidBoxItemDetection.detectionValue ? "True" : "False"}</p>
           </div>
           <div className={`flex flex-col border w-[300px] xl:w-[250px] items-center justify-center px-8 h-[100px] gap-3 ${firstAidBoxItemDetection.detectionValue ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
-            <h1 className="font-bold text-md">Avg. Detection Confg
+            <h1 className="font-bold text-md">Avg Detection Conf
             </h1>
-            <p className="text-md font-semibold">{firstAidBoxItemDetection.detectionValue}</p>
+            <p className="text-md font-semibold">{firstAidBoxItemDetection.detectionValue / 100}%</p>
           </div></div>))}
       </div>
     </>

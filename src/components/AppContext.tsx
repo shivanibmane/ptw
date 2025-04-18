@@ -4,22 +4,25 @@ export const AppContext = createContext(null)
 
 const AppProvider = ({ children }: any) => {
   const [selectedVerificationCheckpoint, setSelectedVerificationCheckpoint] = useState(null);
+  const [isSelectedVerificationFile, setIsSelectedVerificationFile] = useState(false)
+
   // ID Card Verification
   const [idCardImageFile, setIdCardImageFile] = useState(null)
-  const [rawFaceImageFile, setRawFaceImageFile] = useState(null)
   const [idCardImageUrl, setIdCardImageUrl] = useState(null)
-  const [rawFaceImageUrl, setRawFaceImageUrl] = useState(null);
-  const [isSelectedVerificationFile, setIsSelectedVerificationFile] = useState(false)
+
+  // Face Verification
+  const [personImageUrl, setPersonImageUrl] = useState(null);
+  const [personImageFile, setPersonImageFile] = useState(null)
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
   const [selectedCheckboxValue, setSelectedCheckboxValue] = useState(false)
 
   // Firstaid Box
-  const [firstAidKitImageFile, setfirstAidKitImageFile] = useState(null)
+  const [firstAidKitImageFile, setFirstAidKitImageFile] = useState(null)
   const [firstAidKitImageUrl, setfirstAidKitImageUrl] = useState(null)
 
   // Barricade Sites
   const [barricadeSiteFile, setBarricadeSiteFile] = useState(null)
-  const [barricadeSiteImageUrl, setBarricadeSitetImageUrl] = useState(null)
+  const [barricadeSiteImageUrl, setBarricadeSiteImageUrl] = useState(null)
 
   // Voltage Check
   const [nevoltageCheckFile, setNEVoltageCheckFile] = useState(null)
@@ -45,7 +48,7 @@ const AppProvider = ({ children }: any) => {
 
   // Roof-edge Protection
   const [roofEdgeProtectionFile, setRoofEdgeProtectionFile] = useState(null)
-  const [roofEdgeProtectionUrl, setRoofEdgeProtectionsetUrl] = useState(null)
+  const [roofEdgeProtectionUrl, setRoofEdgeProtectionUrl] = useState(null)
 
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -76,8 +79,11 @@ const AppProvider = ({ children }: any) => {
     setSelectedVerificationCheckpoint((prev) => (prev === type ? null : type)); // Toggle selection
   };
 
-  const verificationInputData = async (endpoint: any, file: any) => {
+  useEffect(() => {
 
+  }, [verificationOutputValues])
+
+  const verificationInputData = async (endpoint: any, file: any) => {
     setIsSelectedVerificationFile(true)
     try {
       const formData = new FormData()
@@ -88,7 +94,6 @@ const AppProvider = ({ children }: any) => {
         body: formData,
       })
       const data = await response.json()
-      setIsLoading(true)
       await setVerificationOutputValues(data)
       setIsLoading(false)
       if (data.finalAnalysis) {
@@ -111,21 +116,29 @@ const AppProvider = ({ children }: any) => {
   }
 
   const value: any = {
-    // ID Card Verification
-    setIdCardImageFile,
-    setRawFaceImageFile, handleFileDelete,
-    setIdCardImageUrl,
-    setRawFaceImageUrl,
-    idCardImageFile, rawFaceImageFile, idCardImageUrl, rawFaceImageUrl, isSelectedVerificationFile, setIsSelectedVerificationFile, handleFileUpload,
+    selectedVerificationCheckpoint, setSelectedVerificationCheckpoint,
+    handleFileUpload, handleFileDelete,
+    isSelectedVerificationFile, setIsSelectedVerificationFile,
+
+    // Data handling
+    isLoading, verificationOutputValues,
     verificationInputData,
-    selectedVerificationCheckpoint, setSelectedVerificationCheckpoint, handleCheckboxChange,
-    selectedCheckbox, setSelectedCheckbox,
+
+    // ID Card Verification
+    idCardImageFile, setIdCardImageFile,
+    idCardImageUrl, setIdCardImageUrl,
+
+    // Face Verification
+    personImageFile, personImageUrl,
+    setPersonImageFile, setPersonImageUrl,
+    handleCheckboxChange, selectedCheckbox, setSelectedCheckbox,
     selectedCheckboxValue, setSelectedCheckboxValue,
+
     // Firstaid Box
-    firstAidKitImageFile, setfirstAidKitImageFile, firstAidKitImageUrl, setfirstAidKitImageUrl,
+    firstAidKitImageFile, setFirstAidKitImageFile, firstAidKitImageUrl, setfirstAidKitImageUrl,
 
     // Barricaded Sites
-    barricadeSiteFile, setBarricadeSiteFile, barricadeSiteImageUrl, setBarricadeSitetImageUrl,
+    barricadeSiteFile, setBarricadeSiteFile, barricadeSiteImageUrl, setBarricadeSiteImageUrl,
 
     // Voltage Check
     nevoltageCheckFile, setNEVoltageCheckFile,
@@ -149,14 +162,11 @@ const AppProvider = ({ children }: any) => {
 
     //Roof-edge Protecton
     roofEdgeProtectionFile, setRoofEdgeProtectionFile,
-    roofEdgeProtectionUrl, setRoofEdgeProtectionsetUrl,
+    roofEdgeProtectionUrl, setRoofEdgeProtectionUrl,
 
-    // Data handling
-    isLoading, verificationOutputValues
   }
 
-  useEffect(() => {
-  }, [verificationInputData])
+
 
   return <AppContext.Provider value={value}>
     {children}

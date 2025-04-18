@@ -17,7 +17,7 @@ const FirstAidKitOutput = () => {
         </h1>
         <p className="text-md font-semibold">{verificationOutputValues?.finalAnalysis}</p>
       </div>
-      <div className={`flex gap-1 ${verificationOutputValues?.finalAnalysis === "Compliance" ? "bg-green-300" : "bg-red-200"} border w-full py-2 px-2`}>
+      <div className={`flex gap-1 ${verificationOutputValues?.is_compliant === true ? "bg-green-300" : "bg-red-200"} border w-full py-2 px-2`}>
         <h3 className="font-medium">Reason: </h3>
         <p>{verificationOutputValues?.reason}
         </p>
