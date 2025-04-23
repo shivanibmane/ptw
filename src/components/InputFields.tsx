@@ -1,5 +1,5 @@
 import BarricadeSiteInput from "./BarricadeSite/BarricadeSiteInput"
-import DerrickInput from "./derrick-temp/DerrickInput"
+import DerrickInput from "./derrick/DerrickInput"
 import EarthingCheckInput from "./earthing-check/EarthingCheckInput"
 import FallRestraintInput from "./FallRestraint/FallRestraintInput"
 import FirstAidKitInput from "./first-aid-kit/FirstAidKitInput"

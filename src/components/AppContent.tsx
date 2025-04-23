@@ -1,5 +1,5 @@
 import BarricadeSitetHome from "./BarricadeSite/BarricadeSiteHome";
-import DerrickHome from "./derrick-temp/DerrickHome";
+import DerrickHome from "./derrick/DerrickHome";
 import EarthingCheckHome from "./earthing-check/EarthingCheckHome";
 import FallRestraintHome from "./FallRestraint/FallRestraintHome";
 import FirstAidKitHome from "./first-aid-kit/FirstAidKitHome";
