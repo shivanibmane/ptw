@@ -1,29 +1,27 @@
-const ToolsSafetyOutputCard = ({ toolsOutputData, toolsDetectionCount }: any) => {
+const ToolsSafetyOutputCard = ({ toolsDetectionCount, toolsDetectionTitle, totalToolsDetectionTitle, totalToolsDetectionCount, }: any) => {
 
   return (
     <>
-      <div className="flex flex-col xl:flex-row gap-5" key={toolsOutputData.toolsOutputData_id}>
-        <div className={`flex flex-col border w-[300px] items-center justify-center px-8 h-[100px] gap-3 rounded-sm ${toolsOutputData?.toolsOutputData_status
+      <div className="flex flex-col xl:flex-row gap-5">
+        <div className={`flex flex-col border w-[300px] items-center justify-center px-8 h-[100px] gap-3 rounded-sm ${toolsDetectionCount > 0
           ? "bg-green-200" : "bg-red-100"}`}>
-          <h1 className="font-bold text-md">{toolsOutputData.
-            toolsOutputData_cls === "non-insulated-tool" ? "Non-Insulated Tools " : "Insulated Tools "
+          <h1 className="font-bold text-md">{toolsDetectionTitle
           }
           </h1>
-          <p className="text-md font-semibold">{toolsOutputData?._status
+          <p className="text-md font-semibold">{toolsDetectionCount > 0
             === true ? "True" : "False"}</p>
         </div>
-        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${toolsOutputData?.toolsCount ? "bg-yellow-100" : "bg-red-100"} rounded-sm text-center`}>
-          <h1 className="font-bold text-md">{toolsOutputData.
-            toolsOutputData_cls === "non-insulated-tool" ? "Total Non-Insulated Tools" : "Total Insulated Tools"
+        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${toolsDetectionCount > 0 ? "bg-yellow-100" : "bg-red-100"} rounded-sm text-center`}>
+          <h1 className="font-bold text-md">{totalToolsDetectionTitle
           }
           </h1>
           <p className="text-md font-semibold">{toolsDetectionCount}</p>
         </div>
-        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${toolsOutputData?.toolsOutputDataValue ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
+        <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${toolsDetectionCount > 0 ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
           <h1 className="font-bold text-md">
             Avg Detection Config
           </h1>
-          <p className="text-md font-semibold">{toolsOutputData?.toolsOutputData_conf}</p>
+          <p className="text-md font-semibold">{Math.round(toolsDetectionCount / totalToolsDetectionCount * 100) || 0}%</p>
         </div>
       </div>
 

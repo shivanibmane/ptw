@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
-import NEVoltageCheckImage from "./NEVoltageCheckImage"
-import NEVoltageCheckOutput from "./NEVoltageCheckOutput"
+import NEVoltageCheckImage from "./NeutralEarthVoltageCheckImage"
+import NEVoltageCheckOutput from "./NeutralEarthVoltageCheckOutput"
 
 
-const NEVoltageCheckHome = () => {
+const NeutralEarthVoltageCheckHome = () => {
   const { isSelectedVerificationFile }: any = useContext(AppContext)
   return <>
     <NEVoltageCheckImage />
@@ -14,4 +14,4 @@ const NEVoltageCheckHome = () => {
 
 }
 
-export default NEVoltageCheckHome
+export default NeutralEarthVoltageCheckHome

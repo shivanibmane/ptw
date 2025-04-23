@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { AppContext } from "../AppContext"
 import Loader from "../Loader"
 
-const NEVoltageCheckOutput = () => {
+const NeutralEarthVoltageCheckOutput = () => {
   const { verificationOutputValues, isLoading }: any = useContext(AppContext)
   const neVoltageOutputData = verificationOutputValues?.detections?.find((detection: any) => detection?.detection_cls === "display")
 
@@ -47,4 +47,4 @@ const NEVoltageCheckOutput = () => {
   )
 }
 
-export default NEVoltageCheckOutput
+export default NeutralEarthVoltageCheckOutput

@@ -9,10 +9,10 @@ const FallRestraintImage = () => {
   return (
     <div className="flex xl:flex-row flex-col items-center mx-auto  gap-10 justify-center my-8" >
       <div className="w-[300px] h-auto xl:w-[450px] xl:[400px]  flex justify-center items-center ">
-        {fallRestraintUrl !== null && <div className="flex flex-col items-center"><ModalImage small={fallRestraintUrl} medium={fallRestraintUrl} alt="Fall Restraint" className="w-[300px] h-auto" /><p className="text-gray-400">Fall Restraint</p></div>}
+        {fallRestraintUrl !== null && <div className="flex flex-col items-center"><ModalImage small={fallRestraintUrl} medium={fallRestraintUrl} alt="Raw Fall Restraint Image" className="w-[300px] h-auto" /><p className="text-gray-400">Raw Fall Restraint Image</p></div>}
       </div>
       {isSelectedVerificationFile && !isLoading && <div className="w-[300px] h-auto sm:w-[450px] sm:[400px] flex justify-center items-center">
-        {fallRestraintUrl !== null && <div className="flex flex-col items-center"><ModalImage small={fallRestraintOutputImage} medium={fallRestraintOutputImage} alt="Fall Restraint" className="w-[300px] h-auto" /><p className="text-gray-400">Fall Restraint</p></div>}
+        {fallRestraintUrl !== null && <div className="flex flex-col items-center"><ModalImage small={fallRestraintOutputImage} medium={fallRestraintOutputImage} alt="Output Fall Restraint Image" className="w-[300px] h-auto" /><p className="text-gray-400">Output Fall Restraint Image</p></div>}
       </div>}
     </div>
   )

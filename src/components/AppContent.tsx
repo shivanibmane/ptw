@@ -1,21 +1,21 @@
-
-import BarricadeSitetHome from "./barricadedsites/BarricadeSiteHome";
-import FirstAidKitHome from "./firstaidkit/FirstAidKitHome";
-import IDCardVerificationHome from "./idcardverification/IDCardVerificationHome";
-import NEVoltageCheckHome from "./nevoltage/NEVoltageCheckHome";
+import BarricadeSitetHome from "./BarricadeSite/BarricadeSiteHome";
+import DerrickHome from "./Derrick/DerrickHome";
+import EarthingCheckHome from "./EarthingCheck/EarthingCheckHome";
+import FallRestraintHome from "./FallRestraint/FallRestraintHome";
+import FirstAidKitHome from "./FirstAidKit/FirstAidKitHome";
+import IDCardVerificationHome from "./IDCardVerification/IDCardVerificationHome";
+import NeutralEarthVoltageCheckHome from "./NeutralEarthVoltage/NeutralEarthVoltageCheckHome";
+import RoofEdgeProtectionHome from "./RoofEdgeProtection/RoofEdgeProtectionHome";
+import ToolsSafetyHome from "./ToolsSafety/ToolsSafetyHome";
 import { SidebarTrigger } from "./ui/sidebar";
-import ToolsSafetyHome from "./toolssafety/ToolsSafetyHome";
-import DerrickHome from "./derrick/DerrickHome";
-import EarthingCheckHome from "./earthingcheck/EarthingCheckHome";
-import FallRestraintHome from './fallrestraint/FallRestraintHome';
-import RoofEdgeProtectionHome from "./roofedgeprotection/RoofEdgeProtectionHome";
+
 
 const AppContent = ({ checkpointId }: any) => {
   const contentConfig: any = {
     "id-card-verification": <IDCardVerificationHome />,
     "first-aid-kit": <FirstAidKitHome />,
     "barricade-site": <BarricadeSitetHome />,
-    "ne-voltage-check": <NEVoltageCheckHome />,
+    "ne-voltage-check": <NeutralEarthVoltageCheckHome />,
     "tools-safety": <ToolsSafetyHome />,
     "derrick": <DerrickHome />,
     "earthing-check": <EarthingCheckHome />,

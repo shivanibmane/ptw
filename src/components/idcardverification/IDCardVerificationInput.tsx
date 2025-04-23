@@ -7,7 +7,7 @@ import { AppContext } from "../AppContext"
 export const verifactionCheckPointTypes = [{ id: "face-verification", type: "Face Verification" }, { id: "id-card-verifications", type: "ID Card Verification" },];
 const IDCardVerificationInput = () => {
   const {
-    idCardImageFile, idCardImageUrl, personImageUrl, personImageFile, setIsSelectedVerificationFile, setIdCardImageFile, setPersonImageFile, setIdCardImageUrl,
+    idCardImageFile, personImageFile, setIsSelectedVerificationFile, setIdCardImageFile, setPersonImageFile, setIdCardImageUrl,
     setPersonImageUrl, handleFileDelete, handleFileUpload, selectedCheckbox, setSelectedCheckbox, verificationInputData }: any = useContext(AppContext)
 
   let selectedCheckPointInput;
@@ -35,7 +35,12 @@ const IDCardVerificationInput = () => {
         imageFile={personImageFile}
         deleteFile={() => handleFileDelete(setPersonImageFile, setPersonImageUrl)}
       />
-      {idCardImageFile && personImageFile && <Button variant="destructive" onClick={() => { verificationInputData("/id-card-verification", { type: selectedCheckbox, idCardUrl: idCardImageUrl, personImageUrl: personImageUrl }) }}>Process</Button>}
+      {idCardImageFile && personImageFile && <Button variant="destructive" onClick={() => {
+        verificationInputData("http://localhost:8000/api/face-compare", {
+          imageFile1: idCardImageFile,
+          imageFile2: personImageFile
+        });
+      }}>Process</Button>}
     </div>
   } else if (selectedCheckbox === "ID Card Verification") {
     selectedCheckPointInput = <div>
@@ -45,7 +50,7 @@ const IDCardVerificationInput = () => {
         imageFile={idCardImageFile}
         deleteFile={() => handleFileDelete(setIdCardImageFile, setIdCardImageUrl)}
       />
-      {idCardImageFile && <Button variant="destructive" onClick={() => { verificationInputData("/id-card-verification", { type: selectedCheckbox, idCardUrl: idCardImageUrl }) }}>Process</Button>}
+      {idCardImageFile && <Button variant="destructive" onClick={() => { verificationInputData("http://localhost:8000/api/extract-id-info", idCardImageFile) }}>Process</Button>}
     </div>
   }
 

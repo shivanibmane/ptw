@@ -1,19 +1,19 @@
-import BarricadeSiteInput from './barricadedsites/BarricadeSiteInput'
-import DerrickInput from './derrick/DerrickInput'
-import EarthingCheckInput from './earthingcheck/EarthingCheckInput'
-import FallRestraintInput from './fallrestraint/FallRestraintInput';
-import FirstAidKitInput from './firstaidkit/FirstAidKitInput'
-import IDCardVerificationInput from './idcardverification/IDCardVerificationInput'
-import ToolsSafetyInput from './toolssafety/ToolsSafetyInput'
-import VoltageCheckInput from './nevoltage/NEVoltageCheckInput'
-import RoofEdgeProtectionInput from './roofedgeprotection/RoofEdgeProtectionInput'
+import BarricadeSiteInput from "./BarricadeSite/BarricadeSiteInput"
+import DerrickInput from "./Derrick/DerrickInput"
+import EarthingCheckInput from "./EarthingCheck/EarthingCheckInput"
+import FallRestraintInput from "./FallRestraint/FallRestraintInput"
+import FirstAidKitInput from "./FirstAidKit/FirstAidKitInput"
+import IDCardVerificationInput from "./IDCardVerification/IDCardVerificationInput"
+import NeutralEarthVoltageCheckInput from "./NeutralEarthVoltage/NeutralEarthVoltageCheckInput"
+import RoofEdgeProtectionInput from "./RoofEdgeProtection/RoofEdgeProtectionInput"
+import ToolsSafetyInput from "./ToolsSafety/ToolsSafetyInput"
 
 const InputFields = ({ checkpointId }: any) => {
   const fieldsConfig: any = {
     "id-card-verification": <IDCardVerificationInput />,
     "first-aid-kit": <FirstAidKitInput />,
     "barricade-site": <BarricadeSiteInput />,
-    "ne-voltage-check": <VoltageCheckInput />,
+    "ne-voltage-check": <NeutralEarthVoltageCheckInput />,
     "tools-safety": <ToolsSafetyInput />,
     "derrick": <DerrickInput />,
     "earthing-check": <EarthingCheckInput />,

@@ -25,8 +25,8 @@ const AppProvider = ({ children }: any) => {
   const [barricadeSiteImageUrl, setBarricadeSiteImageUrl] = useState(null)
 
   // Voltage Check
-  const [nevoltageCheckFile, setNEVoltageCheckFile] = useState(null)
-  const [nevoltageCheckUrl, setNEVoltageCheckUrl] = useState(null)
+  const [neutralEarthVoltageCheckFile, setNeutralEarthVoltageCheckFile] = useState(null)
+  const [neutralEarthVoltageCheckUrl, setNeutralEarthVoltageCheckUrl] = useState(null)
 
 
   // Tools Safety
@@ -53,12 +53,13 @@ const AppProvider = ({ children }: any) => {
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+
   const handleFileUpload = (
     event: any,
     setFile: Function,
     setUrl: Function
   ) => {
-    const file = event.target.files[0];
+    const file = event.target.file[0];
     if (file) {
       setFile(file);
       setUrl(URL.createObjectURL(file));
@@ -87,7 +88,14 @@ const AppProvider = ({ children }: any) => {
     setIsSelectedVerificationFile(true)
     try {
       const formData = new FormData()
-      formData.append("imageFile", file)
+      if (file instanceof File || file instanceof Blob) {
+
+        formData.append("imageFile", file);
+      } else {
+        Object.entries(file).forEach(([key, file]) => {
+          formData.append(key, file as File);
+        });
+      }
       setIsLoading(true)
       const response = await fetch(endpoint, {
         method: "POST",
@@ -96,8 +104,8 @@ const AppProvider = ({ children }: any) => {
       const data = await response.json()
       await setVerificationOutputValues(data)
       setIsLoading(false)
-      if (data.finalAnalysis) {
-        if (data.finalAnalysis === "Compliance") {
+      if (data.resaon) {
+        if (data.resaon) {
           toast.success("Reason", {
             description: data.reason
           });
@@ -106,12 +114,7 @@ const AppProvider = ({ children }: any) => {
             description: data.reason
           });
         }
-      } else {
-        toast.warning("Reason", {
-          description: "This is missing data in API"
-        });
       }
-
     } catch (e) { console.log(e) }
   }
 
@@ -141,8 +144,8 @@ const AppProvider = ({ children }: any) => {
     barricadeSiteFile, setBarricadeSiteFile, barricadeSiteImageUrl, setBarricadeSiteImageUrl,
 
     // Voltage Check
-    nevoltageCheckFile, setNEVoltageCheckFile,
-    nevoltageCheckUrl, setNEVoltageCheckUrl,
+    neutralEarthVoltageCheckFile, setNeutralEarthVoltageCheckFile,
+    neutralEarthVoltageCheckUrl, setNeutralEarthVoltageCheckUrl,
 
     // Tools Safety
     toolsSafetyFile, setToolsSafetyFile,
@@ -174,3 +177,4 @@ const AppProvider = ({ children }: any) => {
 }
 
 export default AppProvider;
+
