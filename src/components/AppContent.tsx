@@ -1,12 +1,12 @@
 import BarricadeSitetHome from "./BarricadeSite/BarricadeSiteHome";
-import DerrickHome from "./Derrick/DerrickHome";
-import EarthingCheckHome from "./EarthingCheck/EarthingCheckHome";
+import DerrickHome from "./derrick-temp/DerrickHome";
+import EarthingCheckHome from "./earthing-check/EarthingCheckHome";
 import FallRestraintHome from "./FallRestraint/FallRestraintHome";
-import FirstAidKitHome from "./FirstAidKit/FirstAidKitHome";
-import IDCardVerificationHome from "./IDCardVerification/IDCardVerificationHome";
+import FirstAidKitHome from "./first-aid-kit/FirstAidKitHome";
+import IDCardVerificationHome from "./id-card-verification/IDCardVerificationHome";
 import NeutralEarthVoltageCheckHome from "./NeutralEarthVoltage/NeutralEarthVoltageCheckHome";
-import RoofEdgeProtectionHome from "./RoofEdgeProtection/RoofEdgeProtectionHome";
-import ToolsSafetyHome from "./ToolsSafety/ToolsSafetyHome";
+import RoofEdgeProtectionHome from "./roof-edge-protection/RoofEdgeProtectionHome";
+import ToolsSafetyHome from "./tools-safety/ToolsSafetyHome";
 import { SidebarTrigger } from "./ui/sidebar";
 
 

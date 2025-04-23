@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
 import Loader from "../Loader"
-import ToolsSafetyOutputCard from "../ToolsSafety/ToolsSafetyOutputCard"
+import ToolsSafetyOutputCard from "../tools-safety/ToolsSafetyOutputCard"
 
 const ToolsSafetyOutput = () => {
   const { verificationOutputValues, isLoading }: any = useContext(AppContext)

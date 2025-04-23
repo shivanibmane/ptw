@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { AppContext } from "../AppContext"
-import DerrickOutputCard from "../Derrick/DerrickOutputCard"
+import DerrickOutputCard from "../derrick-temp/DerrickOutputCard"
 import Loader from "../Loader"
 
 const DerrickOutput = () => {
