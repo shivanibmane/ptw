@@ -59,7 +59,7 @@ const AppProvider = ({ children }: any) => {
     setFile: Function,
     setUrl: Function
   ) => {
-    const file = event.target.file[0];
+    const file = event.target.files[0];
     if (file) {
       setFile(file);
       setUrl(URL.createObjectURL(file));
@@ -84,15 +84,15 @@ const AppProvider = ({ children }: any) => {
 
   }, [verificationOutputValues])
 
-  const verificationInputData = async (endpoint: any, file: any) => {
+  const verificationInputData = async (endpoint: any, files: any) => {
     setIsSelectedVerificationFile(true)
     try {
       const formData = new FormData()
-      if (file instanceof File || file instanceof Blob) {
+      if (files instanceof File || files instanceof Blob) {
 
-        formData.append("imageFile", file);
+        formData.append("imageFile", files);
       } else {
-        Object.entries(file).forEach(([key, file]) => {
+        Object.entries(files).forEach(([key, file]) => {
           formData.append(key, file as File);
         });
       }
