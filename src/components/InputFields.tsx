@@ -18,7 +18,7 @@ const InputFields = ({ checkpointId }: any) => {
     "derrick": <DerrickInput />,
     "earthing-check": <EarthingCheckInput />,
     "fall-restraint": <FallRestraintInput />,
-    "roof-edge-protection": <RoofEdgeProtectionInput />
+    "roof-edge-protection": <RoofEdgeProtectionInput />,
   }
   return (
     <>

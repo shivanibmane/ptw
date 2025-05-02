@@ -20,7 +20,7 @@ const ToolsSafetyInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setToolsSafetyFile, setToolsSafetyUrl) }}
           imageFile={toolsSafetyFile}
           deleteFile={() => handleFileDelete(setToolsSafetyFile, setToolsSafetyUrl)}
-        />{toolsSafetyFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/detect-tools", toolsSafetyFile)}>Process</Button>}
+        />{toolsSafetyFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("detect-tools", toolsSafetyFile)}>Process</Button>}
       </div>
     </div>
   )

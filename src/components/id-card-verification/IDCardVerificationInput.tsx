@@ -36,7 +36,7 @@ const IDCardVerificationInput = () => {
         deleteFile={() => handleFileDelete(setPersonImageFile, setPersonImageUrl)}
       />
       {idCardImageFile && personImageFile && <Button variant="destructive" onClick={() => {
-        verificationInputData("http://localhost:8000/api/face-compare", {
+        verificationInputData("face-compare", {
           imageFile1: idCardImageFile,
           imageFile2: personImageFile
         });
@@ -50,7 +50,7 @@ const IDCardVerificationInput = () => {
         imageFile={idCardImageFile}
         deleteFile={() => handleFileDelete(setIdCardImageFile, setIdCardImageUrl)}
       />
-      {idCardImageFile && <Button variant="destructive" onClick={() => { verificationInputData("http://localhost:8000/api/extract-id-info", idCardImageFile) }}>Process</Button>}
+      {idCardImageFile && <Button variant="destructive" onClick={() => { verificationInputData("extract-id-info", idCardImageFile) }}>Process</Button>}
     </div>
   }
 

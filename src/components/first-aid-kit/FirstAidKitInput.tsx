@@ -20,7 +20,7 @@ const FirstAidKitInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setFirstAidKitImageFile, setfirstAidKitImageUrl) }}
           imageFile={firstAidKitImageFile}
           deleteFile={() => handleFileDelete(setFirstAidKitImageFile, setfirstAidKitImageUrl)}
-        />{firstAidKitImageFile && <Button variant="destructive" className="my-2" onClick={() => { verificationInputData('http://localhost:8000/api/first-aid-kit', firstAidKitImageFile) }}>Process</Button>}
+        />{firstAidKitImageFile && <Button variant="destructive" className="my-2" onClick={() => { verificationInputData('first-aid-kit', firstAidKitImageFile) }}>Process</Button>}
       </div>
     </div>
   )

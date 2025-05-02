@@ -20,7 +20,7 @@ const BarricadeSiteInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setBarricadeSiteFile, setBarricadeSiteImageUrl) }}
           imageFile={barricadeSiteFile}
           deleteFile={() => handleFileDelete(setBarricadeSiteFile, setBarricadeSiteImageUrl)}
-        />{barricadeSiteFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/detect-barricades", barricadeSiteFile)}>Process</Button>}
+        />{barricadeSiteFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("detect-barricades", barricadeSiteFile)}>Process</Button>}
       </div>
     </div>
   )

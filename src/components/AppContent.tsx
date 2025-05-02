@@ -20,7 +20,7 @@ const AppContent = ({ checkpointId }: any) => {
     "derrick": <DerrickHome />,
     "earthing-check": <EarthingCheckHome />,
     "fall-restraint": <FallRestraintHome />,
-    "roof-edge-protection": <RoofEdgeProtectionHome />
+    "roof-edge-protection": <RoofEdgeProtectionHome />,
   };
 
   return (

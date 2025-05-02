@@ -50,9 +50,9 @@ const AppProvider = ({ children }: any) => {
   const [roofEdgeProtectionFile, setRoofEdgeProtectionFile] = useState(null)
   const [roofEdgeProtectionUrl, setRoofEdgeProtectionUrl] = useState(null)
 
+
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-
 
   const handleFileUpload = (
     event: any,
@@ -97,7 +97,7 @@ const AppProvider = ({ children }: any) => {
         });
       }
       setIsLoading(true)
-      const response = await fetch(endpoint, {
+      const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
         method: "POST",
         body: formData,
       })
@@ -168,8 +168,6 @@ const AppProvider = ({ children }: any) => {
     roofEdgeProtectionUrl, setRoofEdgeProtectionUrl,
 
   }
-
-
 
   return <AppContext.Provider value={value}>
     {children}

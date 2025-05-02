@@ -20,7 +20,7 @@ const RoofEdgeProtectionInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setRoofEdgeProtectionFile, setRoofEdgeProtectionUrl) }}
           imageFile={roofEdgeProtectionFile}
           deleteFile={() => handleFileDelete(setRoofEdgeProtectionFile, setRoofEdgeProtectionUrl)}
-        />{roofEdgeProtectionFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/roof-edge-protection", roofEdgeProtectionFile)}>Process</Button>}
+        />{roofEdgeProtectionFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("roof-edge-protection", roofEdgeProtectionFile)}>Process</Button>}
       </div>
     </div>
   )

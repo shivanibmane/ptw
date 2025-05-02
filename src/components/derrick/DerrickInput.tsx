@@ -21,7 +21,7 @@ const DerrickInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setDerrickFile, setDerrickUrl) }}
           imageFile={derrickFile}
           deleteFile={() => handleFileDelete(setDerrickFile, setDerrickUrl)}
-        />{derrickFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("http://localhost:8000/api/detect-derrick", derrickFile)}>Process</Button>}
+        />{derrickFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData("detect-derrick", derrickFile)}>Process</Button>}
       </div>
     </div>
   )
