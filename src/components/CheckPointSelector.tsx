@@ -14,6 +14,7 @@ const checkpoints = [
   { path: "/tools-safety", name: "Tools Safety" },
   { path: "/fall-restraint", name: "Fall Restraint" },
   { path: "/roof-edge-protection", name: "Roof-edge Protection" },
+  { path: "/personal-protection-equipment", name: "Personal Protection Equipment" },
 ];
 const CheckPointSelector = () => {
   const { setSelectedVerificationCheckpoint, setIsSelectedVerificationFile, }: any = useContext(AppContext);

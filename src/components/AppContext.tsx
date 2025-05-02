@@ -50,6 +50,10 @@ const AppProvider = ({ children }: any) => {
   const [roofEdgeProtectionFile, setRoofEdgeProtectionFile] = useState(null)
   const [roofEdgeProtectionUrl, setRoofEdgeProtectionUrl] = useState(null)
 
+  // Personal Protection Equipment
+  const [personalProtectionEquipmentFile, setPersonalProtectionEquipmentFile] = useState(null)
+  const [personalProtectionEquipmentUrl, setPersonalProtectionEquipmentUrl] = useState(null)
+  const [equipmentCheckPointsValue, setEquipmentCheckPointsValue] = useState<string[]>([])
 
   const [verificationOutputValues, setVerificationOutputValues]: any = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -166,6 +170,11 @@ const AppProvider = ({ children }: any) => {
     //Roof-edge Protecton
     roofEdgeProtectionFile, setRoofEdgeProtectionFile,
     roofEdgeProtectionUrl, setRoofEdgeProtectionUrl,
+
+    // Personal Protection Equipment
+    personalProtectionEquipmentFile, setPersonalProtectionEquipmentFile,
+    personalProtectionEquipmentUrl, setPersonalProtectionEquipmentUrl,
+    equipmentCheckPointsValue, setEquipmentCheckPointsValue
 
   }
 

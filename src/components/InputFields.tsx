@@ -5,6 +5,7 @@ import FallRestraintInput from "./FallRestraint/FallRestraintInput"
 import FirstAidKitInput from "./first-aid-kit/FirstAidKitInput"
 import IDCardVerificationInput from "./id-card-verification/IDCardVerificationInput"
 import NeutralEarthVoltageCheckInput from "./NeutralEarthVoltage/NeutralEarthVoltageCheckInput"
+import PersonalProtectionEquipmentInput from "./PersonalProtectionEquipment/PersonalProtectionEquipmentInput"
 import RoofEdgeProtectionInput from "./roof-edge-protection/RoofEdgeProtectionInput"
 import ToolsSafetyInput from "./tools-safety/ToolsSafetyInput"
 
@@ -19,6 +20,7 @@ const InputFields = ({ checkpointId }: any) => {
     "earthing-check": <EarthingCheckInput />,
     "fall-restraint": <FallRestraintInput />,
     "roof-edge-protection": <RoofEdgeProtectionInput />,
+    "personal-protection-equipment": <PersonalProtectionEquipmentInput />
   }
   return (
     <>

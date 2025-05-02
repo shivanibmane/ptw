@@ -5,6 +5,7 @@ import FallRestraintHome from "./FallRestraint/FallRestraintHome";
 import FirstAidKitHome from "./first-aid-kit/FirstAidKitHome";
 import IDCardVerificationHome from "./id-card-verification/IDCardVerificationHome";
 import NeutralEarthVoltageCheckHome from "./NeutralEarthVoltage/NeutralEarthVoltageCheckHome";
+import PersonalProtectionEquipmentHome from "./PersonalProtectionEquipment/PersonalProtectionEquipmentHome";
 import RoofEdgeProtectionHome from "./roof-edge-protection/RoofEdgeProtectionHome";
 import ToolsSafetyHome from "./tools-safety/ToolsSafetyHome";
 import { SidebarTrigger } from "./ui/sidebar";
@@ -21,6 +22,7 @@ const AppContent = ({ checkpointId }: any) => {
     "earthing-check": <EarthingCheckHome />,
     "fall-restraint": <FallRestraintHome />,
     "roof-edge-protection": <RoofEdgeProtectionHome />,
+    "personal-protection-equipment": <PersonalProtectionEquipmentHome />,
   };
 
   return (

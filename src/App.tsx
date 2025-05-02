@@ -15,6 +15,7 @@ function App() {
         <Route path="/earthing-check" element={<Home checkpointId="earthing-check" />} />
         <Route path="/fall-restraint" element={<Home checkpointId="fall-restraint" />} />
         <Route path="/roof-edge-protection" element={<Home checkpointId="roof-edge-protection" />} />
+        <Route path="/personal-protection-equipment" element={<Home checkpointId="personal-protection-equipment" />} />
       </Routes>
     </>
   )
