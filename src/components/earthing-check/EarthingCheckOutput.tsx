@@ -26,7 +26,7 @@ const EarthingCheckOutput = () => {
           }</p>
         </div>
         <div className={`flex flex-col border items-center w-[300px] h-[100px] justify-center py-3  px-8  gap-3 ${verificationOutputValues?.earthingDetection?.avgConfidence > 0 ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
-          <h1 className="font-bold text-md">Avg Detection Confg
+          <h1 className="font-bold text-md">Avg Detection Confidence
           </h1>
           <p className="text-md font-semibold">{Math.round(verificationOutputValues?.earthingDetection?.avgConfidence)}%</p>
         </div>

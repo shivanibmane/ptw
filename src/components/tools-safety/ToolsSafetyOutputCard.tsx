@@ -19,7 +19,7 @@ const ToolsSafetyOutputCard = ({ toolsDetectionCount, toolsDetectionTitle, total
         </div>
         <div className={`flex flex-col border w-[300px]  items-center justify-center px-8 h-[100px] gap-3 ${toolsDetectionCount > 0 ? "bg-yellow-100" : "bg-red-100"} rounded-sm`}>
           <h1 className="font-bold text-md">
-            Avg Detection Config
+            Avg Detection Confidence
           </h1>
           <p className="text-md font-semibold">{Math.round(toolsDetectionCount / totalToolsDetectionCount * 100) || 0}%</p>
         </div>

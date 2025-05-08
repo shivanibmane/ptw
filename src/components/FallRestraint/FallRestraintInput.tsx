@@ -21,7 +21,7 @@ const FallRestraintInput = () => {
           fileUpload={(event: any) => { handleFileUpload(event, setFallRestraintFile, setFallRestraintUrl) }}
           imageFile={fallRestraintFile}
           deleteFile={() => handleFileDelete(setFallRestraintFile, setFallRestraintUrl)}
-        />{fallRestraintFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData('http://localhost:8000/api/fall-restraint', fallRestraintFile)}>Process</Button>}
+        />{fallRestraintFile && <Button variant="destructive" className="my-2" onClick={() => verificationInputData('fall-restraint', fallRestraintFile)}>Process</Button>}
       </div>
     </div>
   )
