@@ -18,7 +18,7 @@ const NeutralEarthVoltageCheckOutput = () => {
             ? "bg-red-100" : "bg-yellow-100"} rounded-sm`}>
             <h1 className="font-bold text-md">Extracted Voltage
             </h1>
-            <p className="text-md font-semibold">{neVoltageOutputData?.voltage === "N/A" || verificationOutputValues?.detections?.length === 0 ? "N/A" : Number(neVoltageOutputData?.voltage).toString()
+            <p className="text-md font-semibold">{neVoltageOutputData?.voltage === "N/A" || verificationOutputValues?.detections?.length === 0 ? "Not Found" : Number(neVoltageOutputData?.voltage).toString()
             }</p>
           </div>
           <div className={`flex flex-col border items-center w-[300px] h-[100px] justify-center py-3  px-8  gap-3 ${neVoltageOutputData?.voltage_validation === true ? "bg-green-200" : "bg-red-100"} rounded-sm`}>
