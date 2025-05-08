@@ -4,33 +4,11 @@ import { Button } from "@/components/ui/button"
 import { useContext, useEffect } from "react"
 import { AppContext } from "../AppContext"
 
-export const equipmentCheckPoints = [{ id: "safety-shoe", type: "Safety Shoe" }, { id: "reflective-verst ", type: "Reflective Vest" }, { id: "safety-helment", type: "Safety Helmet" }, { id: "body-harness", type: "Body Harness" }, { id: "hande-protection", type: "Hand Protection" }];
+export const equipmentCheckPoints = [{ id: "safety-shoes", type: "Safety Shoes" }, { id: "reflective-vest", type: "Reflective Vest" }, { id: "safety-helmet", type: "Safety Helmet" }, { id: "body-harness", type: "Body Harness" }, { id: "hand-protection", type: "Hand Protection" }];
 const PersonalProtectionEquipmentInput = () => {
   const {
     setIsSelectedVerificationFile, personalProtectionEquipmentFile, setPersonalProtectionEquipmentFile,
-    setPersonalProtectionEquipmentUrl, handleFileDelete, handleFileUpload, equipmentCheckPointsValue, setEquipmentCheckPointsValue, setVerificationOutputValues, }: any = useContext(AppContext)
-
-  const verificationInputData = async (endpoint: any, files: any) => {
-    setIsSelectedVerificationFile(true)
-    try {
-      const formData = new FormData()
-      if (files instanceof File || files instanceof Blob) {
-
-        formData.append("imageFile", files);
-        formData.append("equipmentCheckPoints", JSON.stringify(equipmentCheckPointsValue))
-      }
-      const response = await fetch(endpoint, {
-        method: "POST",
-        body: formData,
-      })
-      const data = await response.json()
-      console.log("data", data)
-      await setVerificationOutputValues(data)
-
-
-    } catch (e) { console.log(e) }
-  }
-  console.log("equipmentCheckPointsValue", equipmentCheckPointsValue)
+    setPersonalProtectionEquipmentUrl, handleFileDelete, handleFileUpload, equipmentCheckPointsValue, verificationInputData, setEquipmentCheckPointsValue }: any = useContext(AppContext)
 
   const handleCheckboxChange = (id: string) => {
     setEquipmentCheckPointsValue((prev: string[]) =>
@@ -61,12 +39,14 @@ const PersonalProtectionEquipmentInput = () => {
       ))}
       <div className="py-2">
         <FileUploader
-          title="Upload ID Card Image"
+          title="Upload Image"
           fileUpload={(event: any) => handleFileUpload(event, setPersonalProtectionEquipmentFile, setPersonalProtectionEquipmentUrl)}
           imageFile={personalProtectionEquipmentFile}
           deleteFile={() => handleFileDelete(setPersonalProtectionEquipmentFile, setPersonalProtectionEquipmentUrl)}
         />
-        {personalProtectionEquipmentFile && <Button variant="destructive" onClick={() => { verificationInputData("/ppe-safety", personalProtectionEquipmentFile) }}>Process</Button>}
+        {personalProtectionEquipmentFile && <Button variant="destructive" onClick={() =>
+          verificationInputData("detect-equipment", personalProtectionEquipmentFile, equipmentCheckPointsValue)
+        }>Process</Button>}
       </div>
     </div >
   )
