@@ -2,42 +2,70 @@ import { useContext } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
 import { AppContext } from "../AppContext"
 import Loader from "../Loader"
+import { equipmentCheckPoints } from "./equipment-checkpoints"
 import { Checkbox } from "../ui/checkbox"
 
 const PersonalProtectionEquipmentOutput = () => {
-  const { verificationOutputValues, isLoading }: any = useContext(AppContext)
-  const data = verificationOutputValues?.equipmentStatus
-  if (isLoading) {
-    return <div className="flex  justify-center items-center" ><Loader /></div>
+  const { verificationOutputValues, isLoading, equipmentCheckPointsValue }: any = useContext(AppContext)
+  const personsDetails = verificationOutputValues?.persons_ppe_details ?? []
+  const getEquipmentStatus = (details: any, key: string, id: string) => {
+    if (!equipmentCheckPointsValue.includes(id)) {
+      return <span className="text-gray-600">N/A</span>
+    }
+    return details?.[key]
+      ? <span className="text-green-600">True</span>
+      : <span className="text-red-600">False</span>
   }
-  return (!isLoading && <>
-    <Table className="w-11/12 mx-auto border-1 rounded-lg mt-10">
-      <TableHeader>
-        <TableRow className=" text-center">
-          <TableHead >Type</TableHead>
-          <TableHead>Coutn</TableHead>
-          <TableHead>Validation</TableHead>
-          <TableHead >Reason</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody className="text-left">
-        {data?.map((item: any) => (
-          <TableRow key={item.title} >
-            <TableCell >{item.title}</TableCell>
-            <TableCell>{item.count}</TableCell>
-            <TableCell>{item.isValid === true ? <Checkbox defaultChecked={true} disabled={true} /> : <Checkbox defaultChecked={false} disabled={true} />}</TableCell>
-            <TableCell >{item.reason}</TableCell>
+  if (isLoading) {
+    return <div className="flex justify-center items-center"><Loader /></div>
+  }
+  return (
+    <div className="w-full px-4 flex flex-col gap-4">
+      <Table className="mx-auto border-1 rounded-lg ">
+        <TableHeader>
+          <TableRow >
+            <TableHead>Person ID</TableHead>
+            {equipmentCheckPoints.map(e => (
+              <TableHead key={e.id}>{e.type}</TableHead>
+            ))}
+            <TableHead>Validation</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table >
-    <div className={`flex flex-col border  items-center justify-center sm:w-[300px] xl:w-[250px]  px-8 h-[100px] gap-3 ${verificationOutputValues.final_compliance === "Complinace" ? "bg-green-300" : "bg-red-200"} rounded-sm`}>
-      <h1 className="font-bold text-md">Final Analysis
-      </h1>
-      <p className="text-md font-semibold">{verificationOutputValues.final_compliance}
-      </p>
-    </div></>
+        </TableHeader>
+        <TableBody>
+          {personsDetails.length === 0 ? <TableRow>
+            <TableCell colSpan={equipmentCheckPoints.length + 2} className="text-center text-gray-500">
+              No data found
+            </TableCell>
+          </TableRow> : personsDetails.map((entry: any, index: number) => {
+            const personId = Object.keys(entry)[0]
+            const ppeDetails = entry[personId]
+            console.log(ppeDetails)
+            return (
+              <TableRow key={index}>
+                <TableCell>{personId}</TableCell>
+                {equipmentCheckPoints.map(e => (
+                  <TableCell key={e.id} className="">
+                    {getEquipmentStatus(ppeDetails, e.key, e.id)}
+                  </TableCell>
+                ))}
+                <TableCell>
+                  {equipmentCheckPoints.every(e => !equipmentCheckPointsValue.includes(e.id)) ? (
+                    <span className="text-gray-600">N/A</span>
+                  ) : (
+                    <Checkbox
+                      checked
+                      disabled={!equipmentCheckPoints
+                        .filter(e => equipmentCheckPointsValue.includes(e.id))
+                        .every(e => ppeDetails?.[e.key])}
+                    />
+                  )}
+                </TableCell>
+              </TableRow>
+            )
+          })}
+        </TableBody>
+      </Table>
+    </div>
   )
 }
-
 export default PersonalProtectionEquipmentOutput

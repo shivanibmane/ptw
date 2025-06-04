@@ -88,7 +88,7 @@ const AppProvider = ({ children }: any) => {
 
   }, [verificationOutputValues])
 
-  const verificationInputData = async (endpoint: any, files: any, equipmentCheckPointValue?: []) => {
+  const verificationInputData = async (endpoint: any, files: any,) => {
     setIsSelectedVerificationFile(true)
     try {
       const formData = new FormData()
@@ -99,9 +99,6 @@ const AppProvider = ({ children }: any) => {
         Object.entries(files).forEach(([key, file]) => {
           formData.append(key, file as File);
         });
-      }
-      if (equipmentCheckPointValue && Array.isArray(equipmentCheckPointValue)) {
-        formData.append("equipmentCheckPointValue", JSON.stringify(equipmentCheckPointValue));
       }
       setIsLoading(true)
       const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
