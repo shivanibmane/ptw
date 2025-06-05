@@ -2,41 +2,99 @@ import { useContext } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
 import { AppContext } from "../AppContext"
 import Loader from "../Loader"
+import { equipmentCheckPoints } from "./equipment-checkpoints"
 import { Checkbox } from "../ui/checkbox"
 
 const PersonalProtectionEquipmentOutput = () => {
-  const { verificationOutputValues, isLoading }: any = useContext(AppContext)
-  const data = verificationOutputValues?.equipmentStatus
-  if (isLoading) {
-    return <div className="flex  justify-center items-center" ><Loader /></div>
+  const { verificationOutputValues, isLoading, equipmentCheckPointsValue }: any = useContext(AppContext)
+  const personsDetails = verificationOutputValues?.persons_ppe_details ?? []
+  const { final_analysis_message,
+    is_overall_compliant, total_persons_detected
+  } = verificationOutputValues?.summary || {}
+
+  const getEquipmentStatus = (details: any, key: string, id: string) => {
+    if (!equipmentCheckPointsValue.includes(id)) {
+      return <span className="text-gray-600">N/A</span>
+    }
+    return details?.[key]
+      ? <span className="text-green-600">True</span>
+      : <span className="text-red-600">False</span>
   }
-  return (!isLoading && <>
-    <Table className="w-11/12 mx-auto border-1 rounded-lg mt-10">
-      <TableHeader>
-        <TableRow className=" text-center">
-          <TableHead >Type</TableHead>
-          <TableHead>Coutn</TableHead>
-          <TableHead>Validation</TableHead>
-          <TableHead >Reason</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody className="text-left">
-        {data?.map((item: any) => (
-          <TableRow key={item.title} >
-            <TableCell >{item.title}</TableCell>
-            <TableCell>{item.count}</TableCell>
-            <TableCell>{item.isValid === true ? <Checkbox defaultChecked={true} disabled={true} /> : <Checkbox defaultChecked={false} disabled={true} />}</TableCell>
-            <TableCell >{item.reason}</TableCell>
+
+  if (isLoading) {
+    return <div className="flex justify-center items-center"><Loader /></div>
+  }
+
+  return (
+    <div className="w-full px-4 flex flex-col gap-4 items-center">
+      <Table className="mx-auto border border-[#F92609] rounded-lg">
+        <TableHeader >
+          <TableRow className="border border-[#F92609]">
+            <TableHead className="border border-[#F92609] text-center text-[#F92609]">Person ID</TableHead>
+            {equipmentCheckPoints.map(e => (
+              <TableHead key={e.id} className="border border-[#F92609] text-center text-[#F92609]">{e.type}</TableHead>
+            ))}
+            <TableHead className="border border-[#F92609] text-center text-[#F92609]">Validation</TableHead>
+            <TableHead className="border border-[#F92609] text-center text-[#F92609]">Reason</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table >
-    <div className={`flex flex-col border  items-center justify-center sm:w-[300px] xl:w-[250px]  px-8 h-[100px] gap-3 ${verificationOutputValues.final_compliance === "Complinace" ? "bg-green-300" : "bg-red-200"} rounded-sm`}>
-      <h1 className="font-bold text-md">Final Analysis
-      </h1>
-      <p className="text-md font-semibold">{verificationOutputValues.final_compliance}
-      </p>
-    </div></>
+        </TableHeader>
+        <TableBody>
+          {personsDetails.length === 0 ? (
+            <TableRow className="border border-[#F92609]">
+              <TableCell colSpan={equipmentCheckPoints.length + 2} className="text-center text-gray-500 border border-[#F92609]">
+                No data found
+              </TableCell>
+            </TableRow>
+          ) : (
+            personsDetails.map((entry: any, index: number) => {
+              const personId = Object.keys(entry)[0]
+              const ppeDetails = entry[personId]
+              return (
+                <TableRow key={index} className="border border-[#F92609]">
+                  <TableCell className="border border-[#F92609] text-center">{personId}</TableCell>
+                  {equipmentCheckPoints.map(e => (
+                    <TableCell key={e.id} className="border border-[#F92609] text-center">
+                      {getEquipmentStatus(ppeDetails, e.key, e.id)}
+                    </TableCell>
+                  ))}
+                  <TableCell className="border border-[#F92609] text-center">
+                    {equipmentCheckPoints.every(e => !equipmentCheckPointsValue.includes(e.id)) ? (
+                      <span className="text-gray-600">N/A</span>
+                    ) : (
+                      <Checkbox
+                        checked
+                        disabled={ppeDetails?.validity === false}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell className="border border-[#F92609] text-center">{equipmentCheckPoints.every(e => !equipmentCheckPointsValue.includes(e.id)) ? (
+                    <span className="text-gray-600">N/A</span>
+                  ) : ppeDetails?.reason}</TableCell>
+                </TableRow>
+              )
+            })
+          )}
+        </TableBody>
+      </Table>
+      <div className="flex flex-col xl:flex-row gap-5 justify-center mt-9 xl:mt-9 " >
+        <div className={`flex flex-col border items-center  w-[300px] h-[100px]  justify-center py-3  px-8 gap-3 ${total_persons_detected
+          > 0 ? "bg-yellow-100" : "bg-red-200"} rounded-sm`}>
+          <h1 className="font-bold text-md">Total Person Detection
+          </h1>
+          <p className="text-md font-semibold">{total_persons_detected}</p>
+        </div>
+        <div className={`flex flex-col border items-center w-[300px] h-[100px] justify-center py-3  px-8  gap-3 ${is_overall_compliant === true ? "bg-green-200" : "bg-red-100"} rounded-sm`}>
+          <h1 className="font-bold text-md">Final Complainces
+          </h1>
+          <p className="text-md font-semibold">{is_overall_compliant === true ? "True" : "False"}</p>
+        </div>
+      </div>
+      <div className={`flex gap-1 ${is_overall_compliant === true ? "bg-green-300" : "bg-red-200"} border w-9/12 xl:w-full  py-2 px-2 my-2`}>
+        <h3 className="font-medium">Reason:</h3>
+        <p>{final_analysis_message}
+        </p>
+      </div>
+    </div>
   )
 }
 

@@ -3,12 +3,12 @@ import FileUploader from "../FileUploader"
 import { Button } from "@/components/ui/button"
 import { useContext, useEffect } from "react"
 import { AppContext } from "../AppContext"
+import { equipmentCheckPoints } from "./equipment-checkpoints"
 
-export const equipmentCheckPoints = [{ id: "safety-shoes", type: "Safety Shoes" }, { id: "reflective-vest", type: "Reflective Vest" }, { id: "safety-helmet", type: "Safety Helmet" }, { id: "body-harness", type: "Body Harness" }, { id: "hand-protection", type: "Hand Protection" }];
 const PersonalProtectionEquipmentInput = () => {
   const {
     setIsSelectedVerificationFile, personalProtectionEquipmentFile, setPersonalProtectionEquipmentFile,
-    setPersonalProtectionEquipmentUrl, handleFileDelete, handleFileUpload, equipmentCheckPointsValue, verificationInputData, setEquipmentCheckPointsValue }: any = useContext(AppContext)
+    setPersonalProtectionEquipmentUrl, handleFileDelete, handleFileUpload, setEquipmentCheckPointsValue, verificationInputData, }: any = useContext(AppContext)
 
   const handleCheckboxChange = (id: string) => {
     setEquipmentCheckPointsValue((prev: string[]) =>
@@ -20,7 +20,7 @@ const PersonalProtectionEquipmentInput = () => {
 
   useEffect(() => {
     setPersonalProtectionEquipmentFile(null); setPersonalProtectionEquipmentUrl(null);
-    setIsSelectedVerificationFile(false)
+    setIsSelectedVerificationFile(false), setEquipmentCheckPointsValue([])
   }, [equipmentCheckPoints])
 
   return (
@@ -45,7 +45,7 @@ const PersonalProtectionEquipmentInput = () => {
           deleteFile={() => handleFileDelete(setPersonalProtectionEquipmentFile, setPersonalProtectionEquipmentUrl)}
         />
         {personalProtectionEquipmentFile && <Button variant="destructive" onClick={() =>
-          verificationInputData("detect-equipment", personalProtectionEquipmentFile, equipmentCheckPointsValue)
+          verificationInputData("detect-ppe", personalProtectionEquipmentFile)
         }>Process</Button>}
       </div>
     </div >
