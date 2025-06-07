@@ -30,7 +30,7 @@ const PersonalProtectionEquipmentOutput = () => {
       <Table className="mx-auto border border-[#F92609] rounded-lg">
         <TableHeader >
           <TableRow className="border border-[#F92609]">
-            <TableHead className="border border-[#F92609] text-center text-[#F92609]">Person ID</TableHead>
+            <TableHead className="border border-[#F92609] text-center text-[#F92609] row-span-1">Detection No.</TableHead>
             {equipmentCheckPoints.map(e => (
               <TableHead key={e.id} className="border border-[#F92609] text-center text-[#F92609]">{e.type}</TableHead>
             ))}
@@ -51,7 +51,7 @@ const PersonalProtectionEquipmentOutput = () => {
               const ppeDetails = entry[personId]
               return (
                 <TableRow key={index} className="border border-[#F92609]">
-                  <TableCell className="border border-[#F92609] text-center">{personId}</TableCell>
+                  <TableCell className="border border-[#F92609] text-center">{index + 1}</TableCell>
                   {equipmentCheckPoints.map(e => (
                     <TableCell key={e.id} className="border border-[#F92609] text-center">
                       {getEquipmentStatus(ppeDetails, e.key, e.id)}

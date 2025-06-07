@@ -108,19 +108,33 @@ const AppProvider = ({ children }: any) => {
       const data = await response.json()
       await setVerificationOutputValues(data)
       setIsLoading(false)
-      if (data.resaon) {
-        if (data.resaon) {
-          toast.success("Reason", {
-            description: data.reason
-          });
-        } else {
+      if (data.finalAnalysis === "Compliance") {
+        toast.success("Reason", {
+          description: data.reason
+        });
+      } else if (
+        data?.summary?.is_overall_compliant
+        === true) {
+        toast.success("Reason", {
+          description: data?.summary?.overall_reason
+        });
+      } else {
+        if (data.reson) {
           toast.error("Reason", {
             description: data.reason
           });
         }
+        else if (data?.summary?.overall_reason) {
+          toast.error("Reason", {
+            description: data?.summary?.overall_reason
+          });
+        }
       }
-    } catch (e) { console.log(e) }
+    } catch (e) {
+      toast.error("Failed to load data")
+    }
   }
+  console.log(verificationOutputValues)
 
   const value: any = {
     selectedVerificationCheckpoint, setSelectedVerificationCheckpoint,
