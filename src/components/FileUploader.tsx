@@ -25,7 +25,7 @@ const FileUploader = ({ title, fileUpload, imageFile, deleteFile }: any) => {
         {imageFile &&
           <div className="flex items-center w-full max-w-xs px-4 py-1" >
             <FaRegFile className="h-auto w-5" />
-            <div className="ms-3 text-sm font-normal"><p>{imageFile.name}</p><p className="text-xs text-gray-500">{(imageFile.size / 1024).toFixed(2)}KB</p></div>
+            <div className="ms-3 text-sm font-normal overflow-hidden"><p>{imageFile.name}</p><p className="text-xs text-gray-500">{(imageFile.size / 1024).toFixed(2)}KB</p></div>
             <button type="button" className="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900  inline-flex items-center justify-center h-8 w-8" aria-label="Close" onClick={deleteFile} >
               <span className="sr-only">Close</span>
               <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

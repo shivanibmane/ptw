@@ -8,7 +8,7 @@ import { equipmentCheckPoints } from "./equipment-checkpoints"
 const PersonalProtectionEquipmentInput = () => {
   const {
     setIsSelectedVerificationFile, personalProtectionEquipmentFile, setPersonalProtectionEquipmentFile,
-    setPersonalProtectionEquipmentUrl, handleFileDelete, handleFileUpload, setEquipmentCheckPointsValue, verificationInputData, }: any = useContext(AppContext)
+    setPersonalProtectionEquipmentUrl, handleFileDelete, handleFileUpload, setEquipmentCheckPointsValue, verificationInputData, equipmentCheckPointsValue }: any = useContext(AppContext)
 
   const handleCheckboxChange = (id: string) => {
     setEquipmentCheckPointsValue((prev: string[]) =>
@@ -27,8 +27,10 @@ const PersonalProtectionEquipmentInput = () => {
     <div className="px-3 mt-3">
       {equipmentCheckPoints.map((equipmentCheckPoint) => (
         <div className="flex py-2.5 space-x-2" key={equipmentCheckPoint.id} >
-          <Checkbox id={equipmentCheckPoint.type}
-            onCheckedChange={() => handleCheckboxChange(equipmentCheckPoint?.id)} />
+          <Checkbox
+            id={equipmentCheckPoint.type}
+            checked={equipmentCheckPointsValue?.includes(equipmentCheckPoint.id)}
+            onCheckedChange={() => handleCheckboxChange(equipmentCheckPoint.id)} />
           <label
             htmlFor={equipmentCheckPoint.type}
             className="text-sm font-extralight leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -44,8 +46,11 @@ const PersonalProtectionEquipmentInput = () => {
           imageFile={personalProtectionEquipmentFile}
           deleteFile={() => handleFileDelete(setPersonalProtectionEquipmentFile, setPersonalProtectionEquipmentUrl)}
         />
-        {personalProtectionEquipmentFile && <Button variant="destructive" onClick={() =>
-          verificationInputData("detect-ppe", personalProtectionEquipmentFile)
+        {personalProtectionEquipmentFile && <Button variant="destructive" onClick={() => {
+          const allEquipmentCheckpointIds = equipmentCheckPoints.map(item => item.id);
+          setEquipmentCheckPointsValue(allEquipmentCheckpointIds);
+          verificationInputData("detect-ppe", personalProtectionEquipmentFile);
+        }
         }>Process</Button>}
       </div>
     </div >
